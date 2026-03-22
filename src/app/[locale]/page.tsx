@@ -66,12 +66,15 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
         />
 
         <div className="relative max-w-4xl mx-auto">
-          {/* Logo + wordmark */}
-          <div className="flex items-center justify-center gap-3 mb-10">
-            <Image src="/logo.png" alt="Romandy CTO" width={44} height={29} priority />
-            <span className="text-sm font-black text-white tracking-widest uppercase">
-              Romandy <span style={{ color: ORANGE }}>CTO</span>
-            </span>
+          {/* Logo mark — centerstage */}
+          <div className="flex flex-col items-center mb-10">
+            <Image src="/logo.png" alt="Romandy CTO" width={180} height={120} priority />
+            <div className="mt-4 text-base font-black text-white tracking-[0.25em] uppercase">
+              ROMANDY
+            </div>
+            <div className="text-5xl sm:text-6xl font-black text-white tracking-tight leading-none">
+              CTO
+            </div>
           </div>
 
           {/* Badge */}

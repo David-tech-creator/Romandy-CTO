@@ -25,11 +25,12 @@ export function TopNav() {
     <header className="sticky top-0 z-50 nav-blur border-b border-white/10">
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link href={`/${locale}`} className="flex items-center gap-3">
-          <Image src="/logo.png" alt="Romandy CTO" width={32} height={21} />
-          <span className="font-bold text-white tracking-wide">
-            ROMANDY <span style={{ color: ORANGE }}>CTO</span>
-          </span>
+        <Link href={`/${locale}`} className="flex items-center gap-2.5">
+          <Image src="/logo.png" alt="Romandy CTO" width={36} height={24} />
+          <div className="flex flex-col leading-none">
+            <span className="text-[9px] font-black text-white/70 tracking-[0.2em] uppercase">ROMANDY</span>
+            <span className="text-base font-black text-white tracking-wide leading-none">CTO</span>
+          </div>
         </Link>
 
         {/* Links */}
