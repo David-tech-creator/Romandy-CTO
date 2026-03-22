@@ -8,7 +8,8 @@
   },
   "hero": {
     "badge": "Communauté CTO Romandie",
-    "title": "Where Technology Leaders Connect",
+    "titleLine1": "Where Technology Leaders",
+    "titleLine2": "Connect.",
     "subtitle": "Join 510+ CTOs and technology leaders in Romandy for insightful discussions, networking, and growth opportunities.",
     "cta": "Rejoindre la Communauté",
     "ctaEvent": "S'inscrire au prochain événement",

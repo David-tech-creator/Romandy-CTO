@@ -6,9 +6,9 @@ import { EVENTS } from '@/lib/events'
 import { BrandLockup } from '@/components/BrandLockup'
 
 const ORANGE = '#C8834A'
-const DARK = '#2D2D2D'
-const DARKER = '#252525'
-const CARD = '#333333'
+const DARK = '#111111'
+const DARKER = '#0c0c0c'
+const CARD = '#1a1a1a'
 
 export default function EventsPage({ params: { locale } }: { params: { locale: string } }) {
   unstable_setRequestLocale(locale)

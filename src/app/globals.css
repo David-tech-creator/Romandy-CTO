@@ -4,20 +4,20 @@
 
 @layer base {
   :root {
-    --background: 0 0% 17%;
+    --background: 0 0% 7%;         /* #111111 near-black */
     --foreground: 0 0% 98%;
-    --card: 0 0% 20%;
+    --card: 0 0% 10%;
     --card-foreground: 0 0% 98%;
     --primary: 26 52% 55%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 22%;
+    --secondary: 0 0% 12%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 22%;
+    --muted: 0 0% 12%;
     --muted-foreground: 0 0% 60%;
     --accent: 26 52% 55%;
     --accent-foreground: 0 0% 98%;
-    --border: 0 0% 25%;
-    --input: 0 0% 25%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
     --ring: 26 52% 55%;
     --radius: 0.5rem;
   }
@@ -28,7 +28,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-[#2D2D2D] text-white;
+    @apply bg-[#111111] text-white;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
@@ -82,17 +82,60 @@
   .anim-5 { animation: fadeInUp 0.55s ease-out 0.45s both; }
   .anim-6 { animation: fadeInUp 0.55s ease-out 0.55s both; }
 
-  /* Nav blur */
+  /* Updated nav blur — deeper black */
   .nav-blur {
-    background-color: rgba(22, 22, 22, 0.88);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background-color: rgba(6, 6, 6, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
   }
 
   .section-dark  { background-color: #252525; }
   .section-card  {
     background-color: #333333;
     border: 1px solid rgba(255,255,255,0.07);
+  }
+
+  /* Orange gradient text (vbcdr-style accent line) */
+  .text-gradient-orange {
+    background: linear-gradient(90deg, #C8834A 0%, #e8a876 60%, #C8834A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Gradient orb — used as section background accent */
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(80px);
+    opacity: 0.18;
+  }
+  .orb-orange { background: radial-gradient(circle, #C8834A 0%, transparent 70%); }
+  .orb-sm  { width: 300px; height: 300px; }
+  .orb-md  { width: 500px; height: 500px; }
+  .orb-lg  { width: 700px; height: 700px; }
+
+  /* Glass card — used for highlighted/featured cards */
+  .glass-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+  }
+
+  /* Numbered label (01, 02, 03 — vbcdr style) */
+  .step-number {
+    font-size: 0.65rem;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    color: #C8834A;
+    opacity: 0.7;
+  }
+
+  /* Horizontal orange gradient rule */
+  .gradient-rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(200,131,74,0.4) 50%, transparent 100%);
   }
 
   /* Inline nav links — animated orange underline */

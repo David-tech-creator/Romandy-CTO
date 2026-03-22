@@ -14,9 +14,9 @@ const MEETUP_URL = 'https://www.meetup.com/romandy-cto-meetup-group/'
 const SLACK_URL = 'https://join.slack.com/t/romandy-cto/shared_invite/placeholder'
 
 const ORANGE = '#C8834A'
-const DARK = '#2D2D2D'
-const DARKER = '#252525'
-const CARD = '#333333'
+const DARK    = '#111111'
+const DARKER  = '#0c0c0c'
+const CARD    = '#1a1a1a'
 
 
 export default function LandingPage({ params: { locale } }: { params: { locale: string } }) {
@@ -55,21 +55,17 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
     <div className="flex flex-col" style={{ backgroundColor: DARK }}>
 
       {/* ── Hero ──────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden pt-8 pb-10 px-6 text-center" style={{ backgroundColor: DARKER }}>
-        {/* Richer hero gradient */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: `radial-gradient(ellipse 80% 60% at 50% -10%, rgba(200,131,74,0.18) 0%, transparent 65%)` }}
-        />
-        {/* Subtle dot grid */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.04]"
-          style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '28px 28px' }}
-        />
+      <section className="relative overflow-hidden pt-8 pb-12 px-6 text-center" style={{ backgroundColor: DARKER }}>
+        {/* Orbs — inspired by jovweb.dev */}
+        <div className="orb orb-orange orb-lg absolute -top-32 left-1/2 -translate-x-1/2" style={{ opacity: 0.22 }} />
+        <div className="orb orb-orange orb-sm absolute top-20 right-10" style={{ opacity: 0.10 }} />
+        <div className="orb orb-orange orb-sm absolute bottom-0 left-0" style={{ opacity: 0.08 }} />
+        {/* Dot grid */}
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px)', backgroundSize: '28px 28px', opacity: 0.5 }} />
 
         <div className="relative max-w-4xl mx-auto">
           {/* Logo + brand text */}
-          <div className="flex flex-col items-center mb-4 anim-1">
+          <div className="flex flex-col items-center mb-5 anim-1">
             <Image
               src="/logo.png"
               alt="Romandy CTO"
@@ -78,7 +74,7 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
               priority
               style={{ marginBottom: '-45px' }}
             />
-            <p className="text-sm font-black tracking-[0.28em] uppercase" style={{ color: 'rgba(255,255,255,0.65)' }}>
+            <p className="text-sm font-black tracking-[0.28em] uppercase" style={{ color: 'rgba(255,255,255,0.55)' }}>
               ROMANDY
             </p>
             <p className="text-5xl sm:text-6xl font-black text-white tracking-tight leading-none">
@@ -88,35 +84,36 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
 
           {/* Badge */}
           <span
-            className="inline-block text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-4 border anim-2"
-            style={{ color: ORANGE, borderColor: `${ORANGE}40`, backgroundColor: `${ORANGE}12` }}
+            className="inline-block text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-5 border anim-2"
+            style={{ color: ORANGE, borderColor: `${ORANGE}40`, backgroundColor: `${ORANGE}10` }}
           >
             {t('hero.badge')}
           </span>
 
-          {/* Headline */}
-          <h1 className="text-3xl sm:text-5xl font-black text-white uppercase leading-none tracking-tight mb-3 anim-3">
-            {t('hero.title')}
+          {/* Headline — vbcdr-style: white line + orange gradient accent */}
+          <h1 className="text-3xl sm:text-5xl font-black uppercase leading-tight tracking-tight mb-3 anim-3">
+            <span className="text-white">{t('hero.titleLine1')} </span>
+            <span className="text-gradient-orange">{t('hero.titleLine2')}</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-sm text-white/50 max-w-md mx-auto mb-5 leading-relaxed anim-4">
+          <p className="text-sm text-white/45 max-w-md mx-auto mb-6 leading-relaxed anim-4">
             {t('hero.subtitle')}
           </p>
 
-          {/* CTAs */}
+          {/* CTAs — pill-style inspired by vbcdr */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center mb-5 anim-5">
             <Link
               href={`/${locale}/join`}
-              className="btn-glow inline-flex items-center justify-center gap-2 px-7 py-3 rounded-md font-bold text-white transition-opacity hover:opacity-90"
+              className="btn-glow inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full font-bold text-white transition-all hover:scale-105 hover:opacity-95"
               style={{ backgroundColor: ORANGE }}
             >
               {t('nav.joinCommunity')} <ArrowRight size={15} />
             </Link>
             <Link
               href={`/${locale}/register`}
-              className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-md font-semibold text-white border transition-colors hover:bg-white/5 hover:border-white/30"
-              style={{ borderColor: 'rgba(255,255,255,0.18)' }}
+              className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full font-semibold text-white border transition-all hover:border-white/30 hover:bg-white/5"
+              style={{ borderColor: 'rgba(255,255,255,0.15)' }}
             >
               {t('hero.ctaEvent')}
             </Link>
@@ -124,13 +121,13 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
 
           {/* Upcoming event strip */}
           <div
-            className="inline-flex flex-wrap items-center justify-center gap-3 px-5 py-2.5 rounded-xl text-sm anim-6 hover:bg-white/[0.07] transition-colors"
-            style={{ backgroundColor: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)' }}
+            className="inline-flex flex-wrap items-center justify-center gap-3 px-5 py-2.5 rounded-xl text-sm anim-6 transition-colors hover:bg-white/[0.05]"
+            style={{ backgroundColor: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}
           >
             <span className="text-xs font-bold tracking-widest uppercase" style={{ color: ORANGE }}>
               {t('nextEvent.badge')}
             </span>
-            <span className="text-white/60">
+            <span className="text-white/55">
               {UPCOMING_EVENT.date} · {UPCOMING_EVENT.location}
             </span>
             <Link
@@ -145,15 +142,18 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
       </section>
 
       {/* ── Who's in the room ─────────────────────────────────────────── */}
-      <section className="py-16 px-6" style={{ backgroundColor: DARK }}>
-        <div className="max-w-2xl mx-auto text-center">
+      <section className="py-16 px-6 relative overflow-hidden" style={{ backgroundColor: DARK }}>
+        <div className="orb orb-orange orb-sm absolute top-0 right-0" style={{ opacity: 0.08 }} />
+        <div className="relative max-w-2xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-5">{t('who.title')}</h2>
-          <p className="text-lg text-white/55 leading-relaxed">{t('who.body')}</p>
+          <p className="text-lg text-white/50 leading-relaxed">{t('who.body')}</p>
         </div>
+        <div className="gradient-rule max-w-2xl mx-auto mt-14" />
       </section>
 
       {/* ── Three ways to connect ─────────────────────────────────────── */}
-      <section className="py-16 px-6" style={{ backgroundColor: DARKER }}>
+      <section className="py-16 px-6 relative overflow-hidden" style={{ backgroundColor: DARKER }}>
+        <div className="orb orb-orange orb-md absolute -bottom-20 -right-20" style={{ opacity: 0.12 }} />
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-4xl font-black text-white uppercase mb-4">{t('connect.title')}</h2>
@@ -161,7 +161,7 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {pillars.map(({ icon: Icon, titleKey, bodyKey, highlight }) => (
+            {pillars.map(({ icon: Icon, titleKey, bodyKey, highlight }, index) => (
               <div
                 key={titleKey}
                 className="rounded-2xl p-8 card-hover"
@@ -170,6 +170,7 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
                   border: highlight ? `1px solid ${ORANGE}35` : '1px solid rgba(255,255,255,0.07)',
                 }}
               >
+                <span className="step-number block mb-4">0{index + 1}</span>
                 <div
                   className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
                   style={{ backgroundColor: highlight ? `${ORANGE}25` : `${ORANGE}18` }}
@@ -185,11 +186,12 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
       </section>
 
       {/* ── Upcoming event ────────────────────────────────────────────── */}
-      <section id="next-event" style={{ backgroundColor: DARK, borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+      <section id="next-event" className="relative overflow-hidden" style={{ backgroundColor: DARK, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+        <div className="orb orb-orange orb-md absolute -top-10 -left-10" style={{ opacity: 0.10 }} />
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div
             className="rounded-2xl p-8 sm:p-10 flex flex-col sm:flex-row gap-8 items-start sm:items-center justify-between"
-            style={{ backgroundColor: DARKER, border: `1px solid ${ORANGE}30` }}
+            style={{ backgroundColor: DARKER, border: `1px solid ${ORANGE}40`, boxShadow: `0 0 60px -20px ${ORANGE}30` }}
           >
             <div className="flex-1">
               <span
@@ -262,7 +264,8 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
       </section>
 
       {/* ── Past events ───────────────────────────────────────────────── */}
-      <section id="events" className="py-16 px-6" style={{ backgroundColor: DARK }}>
+      <section id="events" className="py-16 px-6 relative overflow-hidden" style={{ backgroundColor: DARK }}>
+        <div className="orb orb-orange orb-sm absolute bottom-0 right-0" style={{ opacity: 0.09 }} />
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
             <div>
@@ -326,17 +329,18 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
       </section>
 
       {/* ── Numbers ───────────────────────────────────────────────────── */}
-      <section style={{ backgroundColor: DARKER, borderTop: '1px solid rgba(255,255,255,0.07)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
-        <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
+      <section className="relative overflow-hidden" style={{ backgroundColor: DARKER, borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+        <div className="orb orb-orange orb-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style={{ opacity: 0.13 }} />
+        <div className="relative max-w-6xl mx-auto px-6 py-14 grid grid-cols-2 sm:grid-cols-4 gap-10 text-center">
           {[
             { value: '510+', label: t('stats.members') },
             { value: '23', label: t('stats.events') },
-            { value: '4.8 ★', label: t('stats.rating') },
+            { value: '4.8★', label: t('stats.rating') },
             { value: t('stats.freeValue'), label: t('stats.free') },
           ].map(({ value, label }) => (
-            <div key={label}>
-              <div className="text-3xl sm:text-4xl font-black stat-value mb-1">{value}</div>
-              <div className="text-xs sm:text-sm" style={{ color: 'rgba(255,255,255,0.4)' }}>{label}</div>
+            <div key={label} className="group">
+              <div className="text-4xl sm:text-5xl font-black stat-value mb-2 transition-transform group-hover:scale-105">{value}</div>
+              <div className="text-xs sm:text-sm font-medium tracking-wide uppercase" style={{ color: 'rgba(255,255,255,0.35)' }}>{label}</div>
             </div>
           ))}
         </div>

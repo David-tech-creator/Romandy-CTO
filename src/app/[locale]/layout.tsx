@@ -19,7 +19,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className={inter.className}>
-      <body className="min-h-screen flex flex-col" style={{ backgroundColor: '#2D2D2D' }}>
+      <body className="min-h-screen flex flex-col" style={{ backgroundColor: '#111111' }}>
         <NextIntlClientProvider messages={messages}>
           <TopNav />
           <main className="flex-1">{children}</main>
