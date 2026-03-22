@@ -348,7 +348,7 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
         <div className="relative max-w-6xl mx-auto px-6 py-14 grid grid-cols-2 sm:grid-cols-4 gap-10 text-center">
           {[
             { value: '510+', label: t('stats.members') },
-            { value: String(PAST_EVENTS.length), label: t('stats.events') },
+            { value: '23', label: t('stats.events') },
             { value: '4.8★', label: t('stats.rating') },
             { value: t('stats.freeValue'), label: t('stats.free') },
           ].map(({ value, label }) => (
