@@ -7,27 +7,28 @@ type Props = {
   linked?: boolean
 }
 
-// The logo PNG has significant transparent glow padding (~8% top, ~28% bottom, ~5% sides).
-// We render oversized and clip the wrapper to show only the knife content.
+// PNG has transparent glow: ~8% top, ~28% bottom, ~6% each side.
+// clipH/clipW crop the glow so the visible knife sits flush against the text.
+// marginTop/marginLeft shift the image to skip the top/left glow.
 const config = {
-  sm: { imgW: 56,  imgH: 37,  clipH: 20, topOff: 3,  label: 'text-[8px]',  title: 'text-sm'  },
-  md: { imgW: 72,  imgH: 48,  clipH: 26, topOff: 4,  label: 'text-[9px]',  title: 'text-lg'  },
-  lg: { imgW: 90,  imgH: 60,  clipH: 33, topOff: 5,  label: 'text-[10px]', title: 'text-2xl' },
+  sm: { imgW: 44, imgH: 30, clipH: 17, clipW: 39, topOff: 2, sideOff: 3, label: 'text-[8px]',  title: 'text-sm'  },
+  md: { imgW: 56, imgH: 37, clipH: 22, clipW: 50, topOff: 3, sideOff: 3, label: 'text-[9px]',  title: 'text-lg'  },
+  lg: { imgW: 70, imgH: 47, clipH: 28, clipW: 62, topOff: 4, sideOff: 4, label: 'text-[10px]', title: 'text-2xl' },
 }
 
 export function BrandLockup({ locale = 'en', size = 'md', linked = true }: Props) {
-  const { imgW, imgH, clipH, topOff, label, title } = config[size]
+  const { imgW, imgH, clipH, clipW, topOff, sideOff, label, title } = config[size]
 
   const inner = (
     <div className="flex items-center gap-2">
-      {/* Clipping wrapper removes transparent glow so the knife visual matches text height */}
-      <div style={{ overflow: 'hidden', height: `${clipH}px`, flexShrink: 0 }}>
+      {/* Crops all four sides of the transparent glow so knife sits tight against the text */}
+      <div style={{ overflow: 'hidden', height: `${clipH}px`, width: `${clipW}px`, flexShrink: 0 }}>
         <Image
           src="/logo.png"
           alt="Romandy CTO"
           width={imgW}
           height={imgH}
-          style={{ marginTop: `${-topOff}px`, display: 'block' }}
+          style={{ marginTop: `${-topOff}px`, marginLeft: `${-sideOff}px`, display: 'block' }}
         />
       </div>
       <div className="flex flex-col leading-none">
