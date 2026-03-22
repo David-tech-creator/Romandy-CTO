@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 110" fill="none">
+  <!-- Knife body -->
+  <rect x="8" y="72" width="124" height="30" rx="15" stroke="#C8834A" stroke-width="2.8"/>
+
+  <!-- Swiss cross on body -->
+  <line x1="40" y1="80" x2="40" y2="94" stroke="#C8834A" stroke-width="2.8" stroke-linecap="round"/>
+  <line x1="33" y1="87" x2="47" y2="87" stroke="#C8834A" stroke-width="2.8" stroke-linecap="round"/>
+
+  <!-- Large main blade (left-center, curving up) -->
+  <path d="M 58 72 C 52 60 38 35 44 4 C 52 30 60 52 72 72 Z" stroke="#C8834A" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- Small right tool (narrower, straighter) -->
+  <path d="M 80 72 L 87 22 L 94 72" stroke="#C8834A" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

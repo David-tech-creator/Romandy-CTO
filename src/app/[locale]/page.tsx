@@ -1,21 +1,13 @@
 import { useTranslations } from 'next-intl'
 import { unstable_setRequestLocale } from 'next-intl/server'
-import { Button } from '@/components/ui/button'
-import {
-  Users,
-  Calendar,
-  Star,
-  MapPin,
-  ArrowRight,
-  Layers,
-  UserSearch,
-  Cpu,
-  UsersRound,
-  BarChart3,
-  ShieldCheck,
-} from 'lucide-react'
+import Image from 'next/image'
+import { Users, Calendar, Star, MapPin, ArrowRight, Layers, UserSearch, Cpu, UsersRound, BarChart3, ShieldCheck } from 'lucide-react'
 
 const MEETUP_URL = 'https://www.meetup.com/romandy-cto-meetup-group/'
+const ORANGE = '#C8834A'
+const DARK = '#2D2D2D'
+const DARKER = '#252525'
+const CARD = '#333333'
 
 const PAST_EVENTS = [
   {
@@ -58,68 +50,74 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
   ] as const
 
   return (
-    <div className="flex flex-col">
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 gradient-bg opacity-[0.06] pointer-events-none" />
-        <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-blue-100 opacity-40 blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-purple-100 opacity-40 blur-3xl pointer-events-none" />
+    <div className="flex flex-col" style={{ backgroundColor: DARK }}>
 
-        <div className="relative max-w-6xl mx-auto px-6 py-28 text-center">
-          <span className="inline-block text-sm font-semibold tracking-wide uppercase text-blue-600 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 mb-6">
+      {/* Hero */}
+      <section className="relative overflow-hidden py-32 text-center px-6" style={{ backgroundColor: DARKER }}>
+        {/* Subtle radial glow */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: `radial-gradient(ellipse 60% 50% at 50% 0%, rgba(200,131,74,0.12) 0%, transparent 70%)` }}
+        />
+
+        <div className="relative max-w-4xl mx-auto">
+          {/* Logo mark */}
+          <div className="flex justify-center mb-8">
+            <Image src="/logo.svg" alt="Romandy CTO" width={80} height={65} priority />
+          </div>
+
+          {/* Badge */}
+          <span
+            className="inline-block text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-6 border"
+            style={{ color: ORANGE, borderColor: `${ORANGE}40`, backgroundColor: `${ORANGE}12` }}
+          >
             {t('hero.badge')}
           </span>
 
-          <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-6">
+          {/* Headline */}
+          <h1 className="text-5xl sm:text-7xl font-black text-white uppercase leading-none tracking-tight mb-6">
             {t('hero.title')}
           </h1>
 
-          <p className="text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-lg text-white/50 max-w-xl mx-auto mb-10 leading-relaxed">
             {t('hero.subtitle')}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="gradient-bg text-white border-0 hover:opacity-90 gap-2 text-base h-12 px-8"
+            <a
+              href={MEETUP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-md font-semibold text-white transition-opacity hover:opacity-90"
+              style={{ backgroundColor: ORANGE }}
             >
-              <a href={MEETUP_URL} target="_blank" rel="noopener noreferrer">
-                {t('hero.cta')}
-                <ArrowRight size={16} />
-              </a>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="h-12 px-8 text-base">
-              <a href="#events">{t('hero.ctaSecondary')}</a>
-            </Button>
+              {t('hero.cta')} <ArrowRight size={16} />
+            </a>
+            <a
+              href="#events"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-md font-semibold text-white border transition-colors hover:border-white/40"
+              style={{ borderColor: 'rgba(255,255,255,0.2)', backgroundColor: 'transparent' }}
+            >
+              {t('hero.ctaSecondary')}
+            </a>
           </div>
         </div>
       </section>
 
       {/* Stats */}
-      <section className="border-y border-gray-100 dark:border-gray-800 bg-gray-50/60 dark:bg-gray-900/40">
+      <section style={{ backgroundColor: DARK, borderTop: '1px solid rgba(255,255,255,0.07)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
         <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-3 gap-8 text-center">
-          <div>
-            <div className="flex justify-center mb-2">
-              <Users className="w-6 h-6 text-blue-600" />
+          {[
+            { icon: Users, value: '510+', label: t('stats.members'), color: ORANGE },
+            { icon: Calendar, value: '23', label: t('stats.events'), color: ORANGE },
+            { icon: Star, value: '4.8', label: t('stats.rating'), color: '#F5B942' },
+          ].map(({ icon: Icon, value, label, color }) => (
+            <div key={label}>
+              <Icon className="w-5 h-5 mx-auto mb-2" style={{ color }} />
+              <div className="text-4xl font-black text-white">{value}</div>
+              <div className="text-sm mt-1" style={{ color: 'rgba(255,255,255,0.45)' }}>{label}</div>
             </div>
-            <div className="text-4xl font-bold text-gray-900 dark:text-white">510+</div>
-            <div className="text-sm text-muted-foreground mt-1">{t('stats.members')}</div>
-          </div>
-          <div>
-            <div className="flex justify-center mb-2">
-              <Calendar className="w-6 h-6 text-purple-600" />
-            </div>
-            <div className="text-4xl font-bold text-gray-900 dark:text-white">23</div>
-            <div className="text-sm text-muted-foreground mt-1">{t('stats.events')}</div>
-          </div>
-          <div>
-            <div className="flex justify-center mb-2">
-              <Star className="w-6 h-6 text-yellow-500" />
-            </div>
-            <div className="text-4xl font-bold text-gray-900 dark:text-white">4.8</div>
-            <div className="text-sm text-muted-foreground mt-1">{t('stats.rating')}</div>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -127,59 +125,53 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
       <section id="about" className="max-w-6xl mx-auto px-6 py-24">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
-              {t('about.title')}
-            </h2>
-            <p className="text-lg text-gray-500 dark:text-gray-400 leading-relaxed mb-6">
-              {t('about.description')}
-            </p>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <MapPin size={15} className="text-blue-600 shrink-0" />
+            <h2 className="text-4xl font-black text-white uppercase mb-6">{t('about.title')}</h2>
+            <p className="text-white/55 leading-relaxed mb-6 text-lg">{t('about.description')}</p>
+            <div className="flex items-center gap-2 text-sm" style={{ color: 'rgba(255,255,255,0.4)' }}>
+              <MapPin size={14} style={{ color: ORANGE }} />
               {t('about.location')}
             </div>
           </div>
-          <div className="relative">
-            <div className="rounded-2xl gradient-bg p-1">
-              <div className="rounded-xl bg-white dark:bg-gray-900 p-8 text-center">
-                <div className="w-20 h-20 rounded-2xl gradient-bg flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white font-bold text-3xl">C</span>
-                </div>
-                <div className="text-2xl font-bold text-gray-900 dark:text-white">Romandy CTO</div>
-                <div className="text-muted-foreground mt-1">Meetup Group</div>
-                <div className="flex items-center justify-center gap-1 mt-3">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={16} className={i < 5 ? 'text-yellow-400 fill-yellow-400' : 'text-gray-300'} />
-                  ))}
-                  <span className="text-sm text-muted-foreground ml-1">4.8 / 5</span>
-                </div>
+
+          {/* Brand card */}
+          <div className="flex justify-center">
+            <div
+              className="rounded-2xl p-8 text-center w-72"
+              style={{ backgroundColor: CARD, border: `1px solid rgba(255,255,255,0.08)` }}
+            >
+              <Image src="/logo.svg" alt="Romandy CTO" width={72} height={58} className="mx-auto mb-5" />
+              <div className="text-xs font-bold tracking-widest text-white/50 uppercase mb-1">ROMANDY</div>
+              <div className="text-3xl font-black text-white tracking-tight">CTO</div>
+              <div className="flex justify-center gap-0.5 mt-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} size={14} fill="#F5B942" className="text-yellow-400" />
+                ))}
               </div>
+              <div className="text-xs text-white/40 mt-1">4.8 · 100 reviews</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Topics */}
-      <section className="bg-gray-50/60 dark:bg-gray-900/40 py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-4">
-            {t('topics.title')}
-          </h2>
-          <p className="text-lg text-muted-foreground text-center mb-14 max-w-xl mx-auto">
-            {t('about.description').split('.')[0]}.
-          </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="py-24 px-6" style={{ backgroundColor: DARKER }}>
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-black text-white uppercase text-center mb-14">{t('topics.title')}</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {topics.map(({ key, icon: Icon }) => (
               <div
                 key={key}
-                className="bg-white dark:bg-gray-900 rounded-2xl p-6 border border-gray-100 dark:border-gray-800 card-hover"
+                className="rounded-xl p-6 card-hover"
+                style={{ backgroundColor: CARD, border: '1px solid rgba(255,255,255,0.07)' }}
               >
-                <div className="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center mb-4">
-                  <Icon size={20} className="text-white" />
+                <div
+                  className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
+                  style={{ backgroundColor: `${ORANGE}20` }}
+                >
+                  <Icon size={20} style={{ color: ORANGE }} />
                 </div>
-                <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
-                  {t(`topics.${key}`)}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <h3 className="font-bold text-white mb-2">{t(`topics.${key}`)}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.45)' }}>
                   {t(`topics.${key}Desc`)}
                 </p>
               </div>
@@ -190,87 +182,85 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
 
       {/* Past Events */}
       <section id="events" className="max-w-6xl mx-auto px-6 py-24">
-        <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-14 text-center">
-          {t('events.title')}
-        </h2>
-        <div className="grid sm:grid-cols-2 gap-6 mb-10">
+        <h2 className="text-4xl font-black text-white uppercase text-center mb-14">{t('events.title')}</h2>
+        <div className="grid sm:grid-cols-2 gap-5 mb-10">
           {PAST_EVENTS.map((event) => (
             <a
               key={event.title}
               href={MEETUP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-white dark:bg-gray-900 rounded-2xl p-6 border border-gray-100 dark:border-gray-800 card-hover block"
+              className="group rounded-xl p-6 block card-hover"
+              style={{ backgroundColor: CARD, border: '1px solid rgba(255,255,255,0.07)' }}
             >
-              <div className="flex items-start justify-between gap-4 mb-3">
-                <h3 className="font-semibold text-gray-900 dark:text-white leading-snug group-hover:text-blue-600 transition-colors">
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <h3 className="font-semibold text-white leading-snug group-hover:text-[#C8834A] transition-colors">
                   {event.title}
                 </h3>
-                <span className="shrink-0 text-xs font-semibold bg-blue-50 text-blue-600 rounded-full px-2.5 py-1 whitespace-nowrap">
+                <span
+                  className="shrink-0 text-xs font-bold rounded-full px-2.5 py-1 whitespace-nowrap"
+                  style={{ backgroundColor: `${ORANGE}20`, color: ORANGE }}
+                >
                   {event.attendees} {t('events.attendees')}
                 </span>
               </div>
-              <div className="flex flex-col gap-1 text-sm text-muted-foreground">
+              <div className="flex flex-col gap-1 text-sm" style={{ color: 'rgba(255,255,255,0.4)' }}>
                 <div className="flex items-center gap-1.5">
-                  <Calendar size={13} className="shrink-0" />
-                  {event.date}
+                  <Calendar size={12} style={{ color: ORANGE }} /> {event.date}
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <MapPin size={13} className="shrink-0" />
-                  {event.location}
+                  <MapPin size={12} style={{ color: ORANGE }} /> {event.location}
                 </div>
               </div>
             </a>
           ))}
         </div>
         <div className="text-center">
-          <Button asChild variant="outline" size="lg" className="gap-2">
-            <a href={MEETUP_URL} target="_blank" rel="noopener noreferrer">
-              {t('events.viewAll')}
-              <ArrowRight size={16} />
-            </a>
-          </Button>
-        </div>
-      </section>
-
-      {/* CTA Banner */}
-      <section className="gradient-bg py-24">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold text-white mb-4">{t('cta.title')}</h2>
-          <p className="text-lg text-blue-100 mb-10 leading-relaxed">{t('cta.subtitle')}</p>
-          <Button
-            asChild
-            size="lg"
-            className="bg-white text-blue-700 hover:bg-blue-50 border-0 gap-2 h-12 px-8 text-base font-semibold"
-          >
-            <a href={MEETUP_URL} target="_blank" rel="noopener noreferrer">
-              {t('cta.button')}
-              <ArrowRight size={16} />
-            </a>
-          </Button>
-          <p className="text-sm text-blue-200 mt-4">{t('cta.free')}</p>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t border-gray-100 dark:border-gray-800 py-10">
-        <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded gradient-bg flex items-center justify-center">
-              <span className="text-white font-bold text-xs">C</span>
-            </div>
-            <span className="font-medium text-gray-900 dark:text-white">{t('footer.rights')}</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <MapPin size={13} />
-            {t('footer.location')}
-          </div>
           <a
             href={MEETUP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-foreground transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-md font-semibold text-white border transition-colors hover:border-white/40"
+            style={{ borderColor: 'rgba(255,255,255,0.2)' }}
           >
+            {t('events.viewAll')} <ArrowRight size={16} />
+          </a>
+        </div>
+      </section>
+
+      {/* CTA Banner */}
+      <section className="py-24 px-6" style={{ backgroundColor: DARKER }}>
+        <div className="max-w-3xl mx-auto text-center">
+          <Image src="/logo.svg" alt="Romandy CTO" width={56} height={45} className="mx-auto mb-8 opacity-80" />
+          <h2 className="text-4xl font-black text-white uppercase mb-4">{t('cta.title')}</h2>
+          <p className="text-lg mb-10 max-w-lg mx-auto leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>
+            {t('cta.subtitle')}
+          </p>
+          <a
+            href={MEETUP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-md font-semibold text-white transition-opacity hover:opacity-90"
+            style={{ backgroundColor: ORANGE }}
+          >
+            {t('cta.button')} <ArrowRight size={16} />
+          </a>
+          <p className="text-sm mt-4" style={{ color: 'rgba(255,255,255,0.3)' }}>{t('cta.free')}</p>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer style={{ borderTop: '1px solid rgba(255,255,255,0.07)', backgroundColor: DARK }}>
+        <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm" style={{ color: 'rgba(255,255,255,0.35)' }}>
+          <div className="flex items-center gap-2">
+            <Image src="/logo.svg" alt="Romandy CTO" width={22} height={18} />
+            <span className="font-bold text-white/60 tracking-wide text-xs uppercase">{t('footer.rights')}</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <MapPin size={12} style={{ color: ORANGE }} />
+            {t('footer.location')}
+          </div>
+          <a href={MEETUP_URL} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
             {t('footer.meetup')} →
           </a>
         </div>

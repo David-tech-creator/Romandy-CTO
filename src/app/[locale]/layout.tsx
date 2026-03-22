@@ -18,7 +18,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className={inter.className}>
-      <body className="min-h-screen bg-white dark:bg-gray-950">
+      <body className="min-h-screen" style={{ backgroundColor: '#2D2D2D' }}>
         <NextIntlClientProvider messages={messages}>
           <TopNav />
           <main>{children}</main>
