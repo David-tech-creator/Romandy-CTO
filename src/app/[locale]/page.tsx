@@ -8,6 +8,11 @@ import {
   MessageSquare, BookOpen, Zap,
 } from 'lucide-react'
 import { UPCOMING_EVENT, PAST_EVENTS } from '@/lib/events'
+import { ScrambleText } from '@/components/effects/ScrambleText'
+import { AnimateIn } from '@/components/effects/AnimateIn'
+import { CountUp } from '@/components/effects/CountUp'
+import { TiltCard } from '@/components/effects/TiltCard'
+import { ParallaxOrb } from '@/components/effects/ParallaxOrb'
 
 const MEETUP_URL = 'https://www.meetup.com/romandy-cto-meetup-group/'
 // ← Replace with your actual Slack invite link
@@ -57,9 +62,9 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
       {/* ── Hero ──────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden pt-8 pb-12 px-6 text-center" style={{ backgroundColor: DARKER }}>
         {/* Orbs — inspired by jovweb.dev */}
-        <div className="orb orb-orange orb-lg absolute -top-32 left-1/2 -translate-x-1/2" style={{ opacity: 0.35 }} />
-        <div className="orb orb-orange orb-sm absolute top-20 right-10" style={{ opacity: 0.18 }} />
-        <div className="orb orb-orange orb-sm absolute bottom-0 left-0" style={{ opacity: 0.14 }} />
+        <ParallaxOrb className="orb orb-orange orb-lg absolute -top-32 left-1/2 -translate-x-1/2" style={{ opacity: 0.35 }} speed={0.15} />
+        <ParallaxOrb className="orb orb-orange orb-sm absolute top-20 right-10" style={{ opacity: 0.18 }} speed={0.25} />
+        <ParallaxOrb className="orb orb-orange orb-sm absolute bottom-0 left-0" style={{ opacity: 0.14 }} speed={0.35} />
         {/* Dot grid */}
         <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px)', backgroundSize: '28px 28px', opacity: 0.5 }} />
 
@@ -93,7 +98,7 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
           {/* Headline — vbcdr-style: white line + orange gradient accent */}
           <h1 className="text-3xl sm:text-5xl font-black uppercase leading-tight tracking-tight mb-3 anim-3">
             <span className="text-white">{t('hero.titleLine1')} </span>
-            <span className="text-gradient-orange">{t('hero.titleLine2')}</span>
+            <span className="text-gradient-orange"><ScrambleText text={t('hero.titleLine2')} /></span>
           </h1>
 
           {/* Subtitle */}
@@ -143,11 +148,15 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
 
       {/* ── Who's in the room ─────────────────────────────────────────── */}
       <section className="py-16 px-6 relative overflow-hidden" style={{ backgroundColor: DARK }}>
+        {/* Sonar heartbeat rings — pulse metaphor */}
+        <div className="sonar-ring" />
+        <div className="sonar-ring sonar-ring-2" />
+        <div className="sonar-ring sonar-ring-3" />
         <div className="orb orb-orange orb-sm absolute top-0 right-0" style={{ opacity: 0.14 }} />
-        <div className="relative max-w-2xl mx-auto text-center">
+        <AnimateIn className="relative max-w-2xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-5">{t('who.title')}</h2>
           <p className="text-lg text-white/50 leading-relaxed">{t('who.body')}</p>
-        </div>
+        </AnimateIn>
         <div className="gradient-rule max-w-2xl mx-auto mt-14" />
       </section>
 
@@ -155,16 +164,16 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
       <section className="py-16 px-6 relative overflow-hidden" style={{ backgroundColor: DARKER }}>
         <div className="orb orb-orange orb-md absolute -bottom-20 -right-20" style={{ opacity: 0.20 }} />
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10">
+          <AnimateIn className="text-center mb-10">
             <h2 className="text-4xl font-black text-white uppercase mb-4">{t('connect.title')}</h2>
             <p className="text-white/45 max-w-2xl mx-auto">{t('connect.subtitle')}</p>
-          </div>
+          </AnimateIn>
 
           <div className="grid md:grid-cols-3 gap-6">
             {pillars.map(({ icon: Icon, titleKey, bodyKey, highlight }, index) => (
+              <AnimateIn key={titleKey} delay={index * 120}>
               <div
-                key={titleKey}
-                className="rounded-2xl p-8 card-hover"
+                className="rounded-2xl p-8 card-hover h-full"
                 style={{
                   backgroundColor: highlight ? `${ORANGE}12` : CARD,
                   border: highlight ? `1px solid ${ORANGE}35` : '1px solid rgba(255,255,255,0.07)',
@@ -180,6 +189,7 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
                 <h3 className="text-lg font-black text-white uppercase mb-3">{t(titleKey)}</h3>
                 <p className="text-sm text-white/55 leading-relaxed">{t(bodyKey)}</p>
               </div>
+              </AnimateIn>
             ))}
           </div>
         </div>
@@ -190,8 +200,8 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
         <div className="orb orb-orange orb-md absolute -top-10 -left-10" style={{ opacity: 0.18 }} />
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div
-            className="rounded-2xl p-8 sm:p-10 flex flex-col sm:flex-row gap-8 items-start sm:items-center justify-between"
-            style={{ backgroundColor: DARKER, border: `1px solid ${ORANGE}40`, boxShadow: `0 0 60px -20px ${ORANGE}30` }}
+            className="animated-event-card rounded-2xl p-8 sm:p-10 flex flex-col sm:flex-row gap-8 items-start sm:items-center justify-between"
+            style={{ backgroundColor: DARKER }}
           >
             <div className="flex-1">
               <span
@@ -236,15 +246,15 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
       {/* ── Topics ────────────────────────────────────────────────────── */}
       <section className="py-16 px-6" style={{ backgroundColor: DARKER, borderTop: '1px solid rgba(255,255,255,0.07)' }}>
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10">
+          <AnimateIn className="text-center mb-10">
             <h2 className="text-4xl font-black text-white uppercase mb-4">{t('topics.title')}</h2>
             {t('topics.subtitle') && <p className="text-white/45 max-w-lg mx-auto">{t('topics.subtitle')}</p>}
-          </div>
+          </AnimateIn>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {topics.map(({ key, icon: Icon }) => (
+            {topics.map(({ key, icon: Icon }, index) => (
+              <AnimateIn key={key} delay={index * 80}>
               <div
-                key={key}
-                className="rounded-xl p-6 card-hover"
+                className="rounded-xl p-6 card-hover h-full"
                 style={{ backgroundColor: CARD, border: '1px solid rgba(255,255,255,0.07)' }}
               >
                 <div
@@ -258,6 +268,7 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
                   {t(`topics.${key}Desc`)}
                 </p>
               </div>
+              </AnimateIn>
             ))}
           </div>
         </div>
@@ -282,11 +293,12 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
           </div>
 
           <div className="grid sm:grid-cols-2 gap-5 mb-10">
-            {PAST_EVENTS.slice(0, 4).map((event) => (
+            {PAST_EVENTS.slice(0, 4).map((event, index) => (
+              <AnimateIn key={event.slug} delay={index * 100}>
+              <TiltCard className="h-full" intensity={5}>
               <Link
-                key={event.slug}
                 href={`/${locale}/events/${event.slug}`}
-                className="group rounded-xl p-6 block card-hover"
+                className="group rounded-xl p-6 block card-hover h-full"
                 style={{ backgroundColor: CARD, border: '1px solid rgba(255,255,255,0.07)' }}
               >
                 <div className="flex items-start justify-between gap-4 mb-4">
@@ -311,6 +323,8 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
                   </div>
                 </div>
               </Link>
+              </TiltCard>
+              </AnimateIn>
             ))}
           </div>
 
@@ -339,7 +353,9 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
             { value: t('stats.freeValue'), label: t('stats.free') },
           ].map(({ value, label }) => (
             <div key={label} className="group">
-              <div className="text-4xl sm:text-5xl font-black stat-value mb-2 transition-transform group-hover:scale-105">{value}</div>
+              <div className="text-4xl sm:text-5xl font-black stat-value mb-2 transition-transform group-hover:scale-105">
+                <CountUp value={value} />
+              </div>
               <div className="text-xs sm:text-sm font-medium tracking-wide uppercase" style={{ color: 'rgba(255,255,255,0.35)' }}>{label}</div>
             </div>
           ))}
