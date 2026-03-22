@@ -17,8 +17,7 @@
   },
   "who": {
     "title": "Fait pour ceux qui construisent",
-    "body1": "Notre nom dit CTO. Notre communauté s'adresse à tous ceux qui pensent comme tel — le fondateur qui décide quels paris technologiques faire, le VP Engineering qui fait passer une équipe de 12 à 80 personnes, l'ingénieur senior qui entre dans un rôle de leadership pour la première fois, le leader produit qui vit à l'intersection de ce qui est possible et de ce qui est nécessaire.",
-    "body2": "Si vous tenez à construire des choses durables — et aux personnes qui le rendent possible — vous avez votre place ici."
+    "body": "Notre nom dit CTO. Notre communauté s'adresse à tous ceux qui pensent à ce niveau. Pas besoin d'un titre précis. Il faut tenir aux bonnes choses : construire de bons produits, diriger avec clarté, et progresser à travers des conversations honnêtes."
   },
   "connect": {
     "title": "Plus qu'un meetup. Une communauté vivante.",
@@ -38,13 +37,13 @@
   },
   "nextEvent": {
     "badge": "Prochain Événement",
-    "title": "IA & Leadership : Construire le CTO de Demain",
-    "date": "24 avril 2026",
+    "title": "L'Innovation dans l'Industrie du Luxe",
+    "date": "30 avril 2026",
     "time": "18h30 CET",
     "location": "Genève, Suisse (lieu à confirmer)",
-    "description": "Une soirée d'échanges sur l'intégration de l'IA dans le leadership technologique, la constitution d'équipes performantes et le networking avec les CTOs et leaders tech de Romandie.",
+    "description": "Sujet et intervenants à annoncer prochainement.",
     "spotsLeft": "places disponibles",
-    "spotsNote": "— réservez la vôtre dès maintenant",
+    "spotsNote": "réservez la vôtre dès maintenant",
     "cta": "S'inscrire",
     "free": "Gratuit. Inscription requise."
   },

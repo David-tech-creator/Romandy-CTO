@@ -15,23 +15,16 @@ export type Event = {
 
 export const EVENTS: Event[] = [
   {
-    slug: 'ai-leadership-april-2026',
-    title: 'AI & Leadership: Building the CTO of Tomorrow',
-    titleFr: 'IA & Leadership : Construire le CTO de Demain',
-    date: 'April 24, 2026',
+    slug: 'innovation-luxury-april-2026',
+    title: 'Innovation in the Luxury Industry',
+    titleFr: "L'Innovation dans l'Industrie du Luxe",
+    date: 'April 30, 2026',
     time: '6:30 PM CET',
     location: 'Geneva, Switzerland (venue TBA)',
     description:
-      'An evening of exchange on integrating AI into technology leadership, building high-performance teams, and networking with CTOs and tech leaders from Romandy.',
+      'Topic and speakers to be announced soon. An evening exploring how technology drives innovation in the luxury sector.',
     descriptionFr:
-      'Une soirée d\'échanges sur l\'intégration de l\'IA dans le leadership technologique, la constitution d\'équipes performantes et le networking avec les CTOs et leaders tech de Romandie.',
-    agenda: [
-      { time: '18:30', item: 'Doors open & networking' },
-      { time: '19:00', item: 'Welcome & introductions' },
-      { time: '19:15', item: 'Keynote: AI in the CTO role' },
-      { time: '20:00', item: 'Panel discussion' },
-      { time: '20:45', item: 'Open networking & drinks' },
-    ],
+      'Sujet et intervenants à annoncer prochainement. Une soirée autour de la façon dont la technologie impulse l\'innovation dans le secteur du luxe.',
     maxSpots: 50,
     isUpcoming: true,
   },

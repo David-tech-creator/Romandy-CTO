@@ -17,8 +17,7 @@
   },
   "who": {
     "title": "Built for the people building things",
-    "body1": "Our name says CTO. Our community is for everyone who thinks like one — the founder deciding which technology bets to make, the VP of Engineering scaling a team from 12 to 80, the senior engineer stepping into leadership for the first time, the product leader who lives at the intersection of what's possible and what's needed.",
-    "body2": "If you care about building things that last — and about the people it takes to build them — you belong here."
+    "body": "Our name says CTO. Our community is for everyone who thinks at that level. You don't need a specific title. You need to care about the right things: building great products, leading with clarity, and growing through honest conversation."
   },
   "connect": {
     "title": "More than a meetup. A community with a pulse.",
@@ -38,13 +37,13 @@
   },
   "nextEvent": {
     "badge": "Upcoming Event",
-    "title": "AI Leadership: Building the CTO of Tomorrow",
-    "date": "April 24, 2026",
+    "title": "Innovation in the Luxury Industry",
+    "date": "April 30, 2026",
     "time": "6:30 PM CET",
     "location": "Geneva, Switzerland (venue TBA)",
-    "description": "An evening of insights on AI integration in tech leadership, building high-performance engineering teams, and networking with CTOs and technology leaders across Romandy.",
+    "description": "Topic and speakers to be announced soon.",
     "spotsLeft": "spots available",
-    "spotsNote": "— secure yours today",
+    "spotsNote": "secure yours today",
     "cta": "Register Now",
     "free": "Free to attend. Registration required."
   },

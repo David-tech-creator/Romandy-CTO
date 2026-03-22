@@ -18,10 +18,6 @@ const DARK = '#2D2D2D'
 const DARKER = '#252525'
 const CARD = '#333333'
 
-const ROLES = [
-  'CTO', 'Founder', 'VP Engineering', 'Product Leader',
-  'Engineering Manager', 'Tech Lead', 'Startup Operator', 'Tech Advisor',
-]
 
 export default function LandingPage({ params: { locale } }: { params: { locale: string } }) {
   unstable_setRequestLocale(locale)
@@ -140,27 +136,9 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
 
       {/* ── Who's in the room ─────────────────────────────────────────── */}
       <section className="py-24 px-6" style={{ backgroundColor: DARK }}>
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-4xl font-black text-white uppercase mb-6">{t('who.title')}</h2>
-          <p className="text-lg text-white/55 leading-relaxed mb-4">{t('who.body1')}</p>
-          <p className="text-lg text-white/55 leading-relaxed mb-10">{t('who.body2')}</p>
-
-          {/* Role pills */}
-          <div className="flex flex-wrap justify-center gap-2">
-            {ROLES.map((role) => (
-              <span
-                key={role}
-                className="text-sm font-semibold px-4 py-1.5 rounded-full"
-                style={{
-                  backgroundColor: `${ORANGE}15`,
-                  color: 'rgba(255,255,255,0.75)',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                }}
-              >
-                {role}
-              </span>
-            ))}
-          </div>
+          <p className="text-xl text-white/60 leading-relaxed">{t('who.body')}</p>
         </div>
       </section>
 
