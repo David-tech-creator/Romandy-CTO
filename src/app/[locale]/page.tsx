@@ -62,12 +62,17 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
         />
 
         <div className="relative max-w-4xl mx-auto">
-          {/* Large hero brand mark — clip container removes bottom glow gap from PNG */}
+          {/* Hero brand mark — negative marginBottom collapses the PNG's transparent bottom glow */}
           <div className="flex flex-col items-center mb-6">
-            <div style={{ overflow: 'hidden', height: '220px', display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}>
-              <Image src="/logo.png" alt="Romandy CTO" width={600} height={400} priority />
-            </div>
-            <p className="text-base font-black tracking-[0.28em] uppercase mt-1" style={{ color: 'rgba(255,255,255,0.75)' }}>
+            <Image
+              src="/logo.png"
+              alt="Romandy CTO"
+              width={480}
+              height={320}
+              priority
+              style={{ marginBottom: '-88px' }}
+            />
+            <p className="text-base font-black tracking-[0.28em] uppercase" style={{ color: 'rgba(255,255,255,0.75)' }}>
               ROMANDY
             </p>
             <p className="text-6xl sm:text-7xl font-black text-white tracking-tight leading-none">
