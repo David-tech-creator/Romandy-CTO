@@ -30,10 +30,10 @@ export function TopNav() {
 
         {/* Nav links */}
         <nav className="hidden md:flex items-center gap-6">
-          <a href="#about" className="text-sm text-white/60 hover:text-white transition-colors">
+          <a href={`/${locale}#about`} className="text-sm text-white/60 hover:text-white transition-colors">
             {t('about')}
           </a>
-          <a href="#events" className="text-sm text-white/60 hover:text-white transition-colors">
+          <a href={`/${locale}#events`} className="text-sm text-white/60 hover:text-white transition-colors">
             {t('events')}
           </a>
           <a
