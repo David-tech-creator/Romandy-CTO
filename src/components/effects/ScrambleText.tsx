@@ -13,10 +13,10 @@ export function ScrambleText({ text, className }: { text: string; className?: st
     iteration.current = 0
     tick.current = 0
     const scramble = () => {
-      // Only advance every 3rd frame (~50ms steps at 60fps) for a visible effect
+      // Advance every 5th frame (~83ms steps at 60fps) for a clearly visible effect
       tick.current += 1
-      if (tick.current % 3 === 0) {
-        iteration.current += 0.35
+      if (tick.current % 5 === 0) {
+        iteration.current += 0.3
       }
       setDisplay(
         text.split('').map((char, i) => {

@@ -12,11 +12,6 @@ const ORANGE = '#C8834A'
 const DARK = '#2D2D2D'
 const DARKER = '#252525'
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY!
-)
-
 export async function generateStaticParams() {
   return EVENTS.map((e) => ({ slug: e.slug }))
 }
@@ -31,21 +26,30 @@ export default async function EventPage({
   const event = EVENTS.find((e) => e.slug === slug)
   if (!event) notFound()
 
-  const [registrationsRes, photosRes] = await Promise.all([
-    supabase
-      .from('event_registrations')
-      .select('id, first_name, last_name, company', { count: 'exact' })
-      .eq('event_name', event.title),
-    supabase
-      .from('event_photos')
-      .select('id, cloudinary_url, caption')
-      .eq('event_slug', slug)
-      .order('uploaded_at', { ascending: true }),
-  ])
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY
 
-  const registrations = registrationsRes.data ?? []
-  const registrationCount = registrationsRes.count ?? 0
-  const photos = photosRes.data ?? []
+  let registrations: { id: string; first_name: string; last_name: string; company: string | null }[] = []
+  let registrationCount = 0
+  let photos: { id: string; cloudinary_url: string; caption: string | null }[] = []
+
+  if (supabaseUrl && supabaseKey) {
+    const supabase = createClient(supabaseUrl, supabaseKey)
+    const [registrationsRes, photosRes] = await Promise.all([
+      supabase
+        .from('event_registrations')
+        .select('id, first_name, last_name, company', { count: 'exact' })
+        .eq('event_name', event.title),
+      supabase
+        .from('event_photos')
+        .select('id, cloudinary_url, caption')
+        .eq('event_slug', slug)
+        .order('uploaded_at', { ascending: true }),
+    ])
+    registrations = registrationsRes.data ?? []
+    registrationCount = registrationsRes.count ?? 0
+    photos = photosRes.data ?? []
+  }
 
   const { sessionClaims } = await auth()
   const isAdmin = (sessionClaims?.metadata as { role?: string })?.role === 'admin'
