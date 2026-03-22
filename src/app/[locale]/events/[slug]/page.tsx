@@ -2,7 +2,6 @@ import { unstable_setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Calendar, MapPin, Users, ArrowLeft, ArrowRight, Clock } from 'lucide-react'
-import { auth } from '@clerk/nextjs/server'
 import { EVENTS } from '@/lib/events'
 import { createClient } from '@supabase/supabase-js'
 import { EventTabs } from '@/components/EventTabs'
@@ -47,8 +46,7 @@ export default async function EventPage({
   const registrationCount = registrationsRes.count ?? 0
   const photos = photosRes.data ?? []
 
-  const { sessionClaims } = await auth()
-  const isAdmin = (sessionClaims?.metadata as { role?: string })?.role === 'admin'
+  const isAdmin = false
 
   const title = locale === 'fr' ? event.titleFr : event.title
   const description = locale === 'fr' ? event.descriptionFr : event.description

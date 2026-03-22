@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { auth } from '@clerk/nextjs/server'
 import { v2 as cloudinary } from 'cloudinary'
 import { createClient } from '@supabase/supabase-js'
 
@@ -15,12 +14,6 @@ const supabase = createClient(
 )
 
 export async function POST(req: NextRequest) {
-  // Only admins can upload
-  const { sessionClaims } = await auth()
-  const isAdmin = (sessionClaims?.metadata as { role?: string })?.role === 'admin'
-  if (!isAdmin) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  }
 
   const formData = await req.formData()
   const file = formData.get('file') as File
