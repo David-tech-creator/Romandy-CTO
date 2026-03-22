@@ -6,8 +6,8 @@ import { JoinForm } from '@/components/JoinForm'
 import { BrandLockup } from '@/components/BrandLockup'
 
 const ORANGE = '#C8834A'
-const DARK = '#111111'
-const DARKER = '#0c0c0c'
+const DARK = '#2D2D2D'
+const DARKER = '#252525'
 
 export default function JoinPage({ params: { locale } }: { params: { locale: string } }) {
   unstable_setRequestLocale(locale)

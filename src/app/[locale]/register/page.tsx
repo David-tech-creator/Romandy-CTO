@@ -6,8 +6,8 @@ import { RegisterForm } from '@/components/RegisterForm'
 import { UPCOMING_EVENT } from '@/lib/events'
 import { BrandLockup } from '@/components/BrandLockup'
 
-const DARKER = '#0c0c0c'
-const CARD = '#1a1a1a'
+const DARKER = '#252525'
+const CARD = '#333333'
 const ORANGE = '#C8834A'
 
 export default function RegisterPage({ params: { locale } }: { params: { locale: string } }) {

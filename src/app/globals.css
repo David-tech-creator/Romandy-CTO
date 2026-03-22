@@ -4,20 +4,20 @@
 
 @layer base {
   :root {
-    --background: 0 0% 7%;         /* #111111 near-black */
+    --background: 0 0% 17%;        /* #2D2D2D charcoal */
     --foreground: 0 0% 98%;
-    --card: 0 0% 10%;
+    --card: 0 0% 20%;
     --card-foreground: 0 0% 98%;
     --primary: 26 52% 55%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 12%;
+    --secondary: 0 0% 22%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 12%;
+    --muted: 0 0% 22%;
     --muted-foreground: 0 0% 60%;
     --accent: 26 52% 55%;
     --accent-foreground: 0 0% 98%;
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
+    --border: 0 0% 25%;
+    --input: 0 0% 25%;
     --ring: 26 52% 55%;
     --radius: 0.5rem;
   }
@@ -28,7 +28,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-[#111111] text-white;
+    @apply bg-[#2D2D2D] text-white;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
@@ -109,7 +109,7 @@
     border-radius: 50%;
     pointer-events: none;
     filter: blur(80px);
-    opacity: 0.18;
+    opacity: 0.28;
   }
   .orb-orange { background: radial-gradient(circle, #C8834A 0%, transparent 70%); }
   .orb-sm  { width: 300px; height: 300px; }

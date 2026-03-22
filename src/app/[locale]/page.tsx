@@ -14,9 +14,9 @@ const MEETUP_URL = 'https://www.meetup.com/romandy-cto-meetup-group/'
 const SLACK_URL = 'https://join.slack.com/t/romandy-cto/shared_invite/placeholder'
 
 const ORANGE = '#C8834A'
-const DARK    = '#111111'
-const DARKER  = '#0c0c0c'
-const CARD    = '#1a1a1a'
+const DARK    = '#2D2D2D'
+const DARKER  = '#252525'
+const CARD    = '#333333'
 
 
 export default function LandingPage({ params: { locale } }: { params: { locale: string } }) {
@@ -57,9 +57,9 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
       {/* ── Hero ──────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden pt-8 pb-12 px-6 text-center" style={{ backgroundColor: DARKER }}>
         {/* Orbs — inspired by jovweb.dev */}
-        <div className="orb orb-orange orb-lg absolute -top-32 left-1/2 -translate-x-1/2" style={{ opacity: 0.22 }} />
-        <div className="orb orb-orange orb-sm absolute top-20 right-10" style={{ opacity: 0.10 }} />
-        <div className="orb orb-orange orb-sm absolute bottom-0 left-0" style={{ opacity: 0.08 }} />
+        <div className="orb orb-orange orb-lg absolute -top-32 left-1/2 -translate-x-1/2" style={{ opacity: 0.35 }} />
+        <div className="orb orb-orange orb-sm absolute top-20 right-10" style={{ opacity: 0.18 }} />
+        <div className="orb orb-orange orb-sm absolute bottom-0 left-0" style={{ opacity: 0.14 }} />
         {/* Dot grid */}
         <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px)', backgroundSize: '28px 28px', opacity: 0.5 }} />
 
@@ -143,7 +143,7 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
 
       {/* ── Who's in the room ─────────────────────────────────────────── */}
       <section className="py-16 px-6 relative overflow-hidden" style={{ backgroundColor: DARK }}>
-        <div className="orb orb-orange orb-sm absolute top-0 right-0" style={{ opacity: 0.08 }} />
+        <div className="orb orb-orange orb-sm absolute top-0 right-0" style={{ opacity: 0.14 }} />
         <div className="relative max-w-2xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-5">{t('who.title')}</h2>
           <p className="text-lg text-white/50 leading-relaxed">{t('who.body')}</p>
@@ -153,7 +153,7 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
 
       {/* ── Three ways to connect ─────────────────────────────────────── */}
       <section className="py-16 px-6 relative overflow-hidden" style={{ backgroundColor: DARKER }}>
-        <div className="orb orb-orange orb-md absolute -bottom-20 -right-20" style={{ opacity: 0.12 }} />
+        <div className="orb orb-orange orb-md absolute -bottom-20 -right-20" style={{ opacity: 0.20 }} />
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-4xl font-black text-white uppercase mb-4">{t('connect.title')}</h2>
@@ -187,7 +187,7 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
 
       {/* ── Upcoming event ────────────────────────────────────────────── */}
       <section id="next-event" className="relative overflow-hidden" style={{ backgroundColor: DARK, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-        <div className="orb orb-orange orb-md absolute -top-10 -left-10" style={{ opacity: 0.10 }} />
+        <div className="orb orb-orange orb-md absolute -top-10 -left-10" style={{ opacity: 0.18 }} />
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div
             className="rounded-2xl p-8 sm:p-10 flex flex-col sm:flex-row gap-8 items-start sm:items-center justify-between"
@@ -265,7 +265,7 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
 
       {/* ── Past events ───────────────────────────────────────────────── */}
       <section id="events" className="py-16 px-6 relative overflow-hidden" style={{ backgroundColor: DARK }}>
-        <div className="orb orb-orange orb-sm absolute bottom-0 right-0" style={{ opacity: 0.09 }} />
+        <div className="orb orb-orange orb-sm absolute bottom-0 right-0" style={{ opacity: 0.16 }} />
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
             <div>
@@ -330,7 +330,7 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
 
       {/* ── Numbers ───────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden" style={{ backgroundColor: DARKER, borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-        <div className="orb orb-orange orb-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style={{ opacity: 0.13 }} />
+        <div className="orb orb-orange orb-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style={{ opacity: 0.22 }} />
         <div className="relative max-w-6xl mx-auto px-6 py-14 grid grid-cols-2 sm:grid-cols-4 gap-10 text-center">
           {[
             { value: '510+', label: t('stats.members') },
