@@ -73,7 +73,7 @@
   },
   "events": {
     "title": "Recent Events",
-    "headline": "{count} events. Hundreds of conversations.",
+    "headline": "Events. Hundreds of conversations.",
     "headlineSub": "Each one a reason to show up to the next.",
     "subtitle": "Browse all past and upcoming Romandy CTO events.",
     "attendees": "attendees",

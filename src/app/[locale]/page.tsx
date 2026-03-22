@@ -280,7 +280,7 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-2">{t('events.headline', { count: PAST_EVENTS.length })}</h2>
+              <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-2">{t('events.headline')}</h2>
               <p className="text-white/45">{t('events.headlineSub')}</p>
             </div>
             <Link
