@@ -749,10 +749,9 @@ export default async function AgenticCommercePage({
           {/* Timeline */}
           <div className="flex flex-col mb-16">
             {([
-              { time: '19:00', label: 'Introduction to Agentic Commerce', sub: 'A short framing presentation to level-set the room on where we are today', highlight: false },
-              { time: '19:50', label: 'Panel Discussion', sub: 'Architecture · Strategy · The luxury paradox. Open, conversational, practitioner-led.', highlight: true },
-              { time: '20:45', label: 'Open Q&A', sub: 'The room drives the conversation', highlight: false },
-              { time: '21:00', label: 'Drinks & Networking', sub: 'Continue the conversation informally', highlight: false },
+              { time: '19:00 – 19:20', label: 'Introduction to Agentic Commerce', sub: 'A short framing presentation to level-set the room on where we are today', highlight: false },
+              { time: '19:20', label: 'Panel Discussion & Open Q&A', sub: 'Architecture · Strategy · The luxury paradox. Open, conversational, practitioner-led — the room drives the conversation.', highlight: true },
+              { time: '20:30', label: 'Drinks & Networking', sub: 'Continue the conversation informally', highlight: false },
             ] as const).map(({ time, label, sub, highlight }, i, arr) => (
               <div key={time} className="flex gap-5 items-start">
                 {/* Dot + vertical line */}
