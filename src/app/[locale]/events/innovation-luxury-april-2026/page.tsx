@@ -143,7 +143,7 @@ function AgentNetworkSVG() {
       viewBox="0 0 480 380"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      style={{ width: '100%', maxWidth: 580, height: 'auto' }}
+      style={{ width: '100%', maxWidth: 780, height: 'auto' }}
       aria-hidden="true"
     >
       {/* Background rings */}
@@ -161,7 +161,7 @@ function AgentNetworkSVG() {
         <circle cx="1" cy="1" r="0.8" fill="rgba(255,255,255,0.04)" />
       </pattern>
       <clipPath id="robot-clip">
-        <circle cx="240" cy="190" r="52" />
+        <circle cx="240" cy="190" r="70" />
       </clipPath>
       <rect width="480" height="380" fill="url(#dots)" />
 
@@ -215,19 +215,19 @@ function AgentNetworkSVG() {
 
       {/* ── Agent node (center, glowing) ── */}
       {/* outer glow pulse */}
-      <circle cx="240" cy="190" r="72" fill="rgba(200,131,74,0.08)" className="ac-glow" />
-      <circle cx="240" cy="190" r="72" fill="rgba(200,131,74,0.06)" className="ac-glow ac-ring-2" />
+      <circle cx="240" cy="190" r="92" fill="rgba(200,131,74,0.08)" className="ac-glow" />
+      <circle cx="240" cy="190" r="92" fill="rgba(200,131,74,0.06)" className="ac-glow ac-ring-2" />
       {/* mid ring */}
-      <circle cx="240" cy="190" r="58" fill={DARKER} stroke="rgba(200,131,74,0.55)" strokeWidth="2" />
+      <circle cx="240" cy="190" r="76" fill={DARKER} stroke="rgba(200,131,74,0.55)" strokeWidth="2" />
       {/* robot image clipped to circle */}
       <image
         href="/agentic6.jpg"
-        x="188" y="138" width="104" height="104"
+        x="170" y="120" width="140" height="140"
         clipPath="url(#robot-clip)"
         preserveAspectRatio="xMidYMid slice"
       />
       {/* amber ring over image */}
-      <circle cx="240" cy="190" r="52" fill="none" stroke={ORANGE} strokeWidth="2" opacity="0.7" />
+      <circle cx="240" cy="190" r="70" fill="none" stroke={ORANGE} strokeWidth="2.5" opacity="0.8" />
 
       {/* ── Endpoint nodes ── */}
       {/* Brand Agent */}
@@ -525,36 +525,35 @@ export default async function AgenticCommercePage({
       {/* SPEAKERS                                                      */}
       {/* ══════════════════════════════════════════════════════════════ */}
       <section className="py-20 px-6 relative overflow-hidden" style={{ backgroundColor: DARKER }}>
-        {/* Friendly robot — blurred background */}
-        <img
-          src="/friendlyrobot.png"
-          alt=""
-          aria-hidden="true"
-          style={{
-            position: 'absolute', inset: 0, width: '100%', height: '100%',
-            objectFit: 'cover', objectPosition: 'center',
-            opacity: 0.18, filter: 'blur(18px)', transform: 'scale(1.05)',
-            pointerEvents: 'none',
-          }}
-        />
-        {/* Dark overlay so cards stay legible */}
-        <div style={{
-          position: 'absolute', inset: 0, pointerEvents: 'none',
-          background: 'rgba(37,37,37,0.82)',
-        }} />
-        <div className="sonar-ring" style={{ opacity: 0.30 }} />
-        <div className="sonar-ring sonar-ring-2" style={{ opacity: 0.30 }} />
-        <div className="sonar-ring sonar-ring-3" style={{ opacity: 0.30 }} />
+        <div className="max-w-6xl mx-auto relative" style={{ zIndex: 1 }}>
+          {/* 2-column: robot left, content right */}
+          <div className="grid lg:grid-cols-[1fr_1.35fr] gap-12 items-start">
 
-        <div className="max-w-4xl mx-auto relative" style={{ zIndex: 1 }}>
-          <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: ORANGE }}>
-            The Speakers
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-14">
-            Two perspectives, one evening
-          </h2>
+            {/* Left — friendly robot image */}
+            <div className="hidden lg:flex items-center justify-center">
+              <img
+                src="/friendlyrobot.png"
+                alt="Friendly robot mascot"
+                style={{
+                  width: '100%',
+                  maxWidth: 480,
+                  height: 'auto',
+                  display: 'block',
+                  filter: 'drop-shadow(0 0 48px rgba(200,131,74,0.35))',
+                }}
+              />
+            </div>
 
-          <div className="flex flex-col gap-6">
+            {/* Right — header + speaker cards */}
+            <div>
+              <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: ORANGE }}>
+                The Speakers
+              </p>
+              <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-14">
+                Two perspectives, one evening
+              </h2>
+
+              <div className="flex flex-col gap-6">
 
             {/* ── Pedro ─────────────────────────────────────────────── */}
             <div
@@ -662,7 +661,9 @@ export default async function AgenticCommercePage({
               </div>
             </div>
 
-          </div>
+              </div>
+            </div>{/* end right column */}
+          </div>{/* end grid */}
         </div>
       </section>
 
