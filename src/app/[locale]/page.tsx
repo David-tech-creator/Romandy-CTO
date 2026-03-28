@@ -298,16 +298,21 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
         </div>
       </section>
 
-      {/* ── Editorial separator ───────────────────────────────────────── */}
-      <div style={{ height: 320, position: 'relative', overflow: 'hidden' }}>
-        <img src="/conversations4.gif" alt="" aria-hidden="true" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%' }} />
-        <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, ${DARKER} 0%, transparent 20%, transparent 80%, ${DARK} 100%)` }} />
-      </div>
-
       {/* ── Past events ───────────────────────────────────────────────── */}
       <section id="events" className="py-16 px-6 relative overflow-hidden" style={{ backgroundColor: DARK }}>
+        {/* GIF background — covers heading + cards */}
+        <img src="/conversations4.gif" alt="" aria-hidden="true" style={{
+          position: 'absolute', inset: 0, width: '100%', height: '100%',
+          objectFit: 'cover', objectPosition: 'center',
+          opacity: 0.35, pointerEvents: 'none',
+        }} />
+        {/* Gradient: fade in from DARKER top, fade out to DARK bottom */}
+        <div style={{
+          position: 'absolute', inset: 0, pointerEvents: 'none',
+          background: `linear-gradient(to bottom, ${DARKER} 0%, transparent 15%, transparent 85%, ${DARK} 100%)`,
+        }} />
         <div className="orb orb-orange orb-sm absolute bottom-0 right-0" style={{ opacity: 0.16 }} />
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto relative" style={{ zIndex: 1 }}>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
             <div>
               <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-2">{t('events.headline')}</h2>
