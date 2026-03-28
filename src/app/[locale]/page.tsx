@@ -60,17 +60,43 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
     <div className="flex flex-col" style={{ backgroundColor: DARK }}>
 
       {/* ── Hero ──────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden pt-8 pb-12 px-6 text-center" style={{ backgroundColor: DARKER }}>
-        {/* Orbs — inspired by jovweb.dev */}
-        <ParallaxOrb className="orb orb-orange orb-lg absolute -top-32 left-1/2 -translate-x-1/2" style={{ opacity: 0.35 }} speed={0.15} />
-        <ParallaxOrb className="orb orb-orange orb-sm absolute top-20 right-10" style={{ opacity: 0.18 }} speed={0.25} />
-        <ParallaxOrb className="orb orb-orange orb-sm absolute bottom-0 left-0" style={{ opacity: 0.14 }} speed={0.35} />
-        {/* Dot grid */}
-        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px)', backgroundSize: '28px 28px', opacity: 0.5 }} />
+      <section
+        className="relative overflow-hidden flex items-center justify-center text-center px-6"
+        style={{ backgroundColor: DARKER, minHeight: '100vh' }}
+      >
+        {/* Background video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          aria-hidden="true"
+          style={{
+            position: 'absolute', inset: 0,
+            width: '100%', height: '100%',
+            objectFit: 'cover', objectPosition: 'center',
+            pointerEvents: 'none',
+          }}
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
 
-        <div className="relative max-w-4xl mx-auto">
+        {/* Dark scrim — strong center darkening, lighter at edges to let video breathe */}
+        <div style={{
+          position: 'absolute', inset: 0, pointerEvents: 'none',
+          background: 'radial-gradient(ellipse at center, rgba(37,37,37,0.72) 0%, rgba(37,37,37,0.88) 60%, rgba(37,37,37,0.96) 100%)',
+        }} />
+        {/* Bottom fade into next section */}
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0, height: 120,
+          background: `linear-gradient(to bottom, transparent, ${DARKER})`,
+          pointerEvents: 'none',
+        }} />
+
+        {/* Content */}
+        <div className="relative py-24" style={{ zIndex: 1, maxWidth: '52rem', width: '100%' }}>
           {/* Logo + brand text */}
-          <div className="flex flex-col items-center mb-5 anim-1">
+          <div className="flex flex-col items-center mb-6 anim-1">
             <Image
               src="/logo.png"
               alt="Romandy CTO"
@@ -89,36 +115,36 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
 
           {/* Badge */}
           <span
-            className="inline-block text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-5 border anim-2"
-            style={{ color: ORANGE, borderColor: `${ORANGE}40`, backgroundColor: `${ORANGE}10` }}
+            className="inline-block text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-6 border anim-2"
+            style={{ color: ORANGE, borderColor: `${ORANGE}40`, backgroundColor: `${ORANGE}14` }}
           >
             {t('hero.badge')}
           </span>
 
-          {/* Headline — vbcdr-style: white line + orange gradient accent */}
-          <h1 className="text-3xl sm:text-5xl font-black uppercase leading-tight tracking-tight mb-3 anim-3">
+          {/* Headline */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase leading-tight tracking-tight mb-4 anim-3">
             <span className="text-white">{t('hero.titleLine1')} </span>
             <span className="text-gradient-orange"><ScrambleText text={t('hero.titleLine2')} /></span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-sm text-white/45 max-w-md mx-auto mb-6 leading-relaxed anim-4">
+          <p className="text-base text-white/50 max-w-md mx-auto mb-8 leading-relaxed anim-4">
             {t('hero.subtitle')}
           </p>
 
-          {/* CTAs — pill-style inspired by vbcdr */}
-          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-5 anim-5">
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-8 anim-5">
             <Link
               href={`/${locale}/join`}
-              className="btn-glow inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full font-bold text-white transition-all hover:scale-105 hover:opacity-95"
+              className="btn-glow inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full font-bold text-white transition-all hover:scale-105 hover:opacity-95"
               style={{ backgroundColor: ORANGE }}
             >
               {t('nav.joinCommunity')} <ArrowRight size={15} />
             </Link>
             <Link
               href={`/${locale}/register`}
-              className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full font-semibold text-white border transition-all hover:border-white/30 hover:bg-white/5"
-              style={{ borderColor: 'rgba(255,255,255,0.15)' }}
+              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full font-semibold text-white border transition-all hover:border-white/30 hover:bg-white/5"
+              style={{ borderColor: 'rgba(255,255,255,0.18)' }}
             >
               {t('hero.ctaEvent')}
             </Link>
@@ -126,8 +152,8 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
 
           {/* Upcoming event strip */}
           <div
-            className="inline-flex flex-wrap items-center justify-center gap-3 px-5 py-2.5 rounded-xl text-sm anim-6 transition-colors hover:bg-white/[0.05]"
-            style={{ backgroundColor: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}
+            className="inline-flex flex-wrap items-center justify-center gap-3 px-5 py-2.5 rounded-xl text-sm anim-6 transition-colors hover:bg-white/[0.06]"
+            style={{ backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.10)' }}
           >
             <span className="text-xs font-bold tracking-widest uppercase" style={{ color: ORANGE }}>
               {t('nextEvent.badge')}
