@@ -213,62 +213,6 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
         </div>
       </section>
 
-      {/* ── Three ways to connect ─────────────────────────────────────── */}
-      <section className="py-16 px-6 relative overflow-hidden" style={{ backgroundColor: DARKER }}>
-        {/* Particle video background */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          aria-hidden="true"
-          style={{
-            position: 'absolute', inset: 0,
-            width: '100%', height: '100%',
-            objectFit: 'cover', objectPosition: 'center',
-            opacity: 0.18, pointerEvents: 'none',
-          }}
-        >
-          <source src="/particles.mp4" type="video/mp4" />
-        </video>
-        {/* Scrim to keep cards legible */}
-        <div style={{
-          position: 'absolute', inset: 0, pointerEvents: 'none',
-          background: `radial-gradient(ellipse at center, rgba(37,37,37,0.55) 0%, rgba(37,37,37,0.82) 100%)`,
-        }} />
-        <div className="orb orb-orange orb-md absolute -bottom-20 -right-20" style={{ opacity: 0.15 }} />
-        <div className="relative max-w-6xl mx-auto" style={{ zIndex: 1 }}>
-          <AnimateIn className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-4">{t('connect.title')}</h2>
-            <p className="text-white/45 max-w-2xl mx-auto">{t('connect.subtitle')}</p>
-          </AnimateIn>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {pillars.map(({ icon: Icon, titleKey, bodyKey, highlight }, index) => (
-              <AnimateIn key={titleKey} delay={index * 120}>
-              <div
-                className="rounded-2xl p-8 card-hover h-full"
-                style={{
-                  backgroundColor: highlight ? `${ORANGE}12` : CARD,
-                  border: highlight ? `1px solid ${ORANGE}35` : '1px solid rgba(255,255,255,0.07)',
-                }}
-              >
-                <span className="step-number block mb-4">0{index + 1}</span>
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
-                  style={{ backgroundColor: highlight ? `${ORANGE}25` : `${ORANGE}18` }}
-                >
-                  <Icon size={22} style={{ color: ORANGE }} />
-                </div>
-                <h3 className="text-lg font-black text-white uppercase mb-3">{t(titleKey)}</h3>
-                <p className="text-sm text-white/55 leading-relaxed">{t(bodyKey)}</p>
-              </div>
-              </AnimateIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── Upcoming event ────────────────────────────────────────────── */}
       <section id="next-event" className="relative overflow-hidden" style={{ backgroundColor: DARK, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="orb orb-orange orb-md absolute -top-10 -left-10" style={{ opacity: 0.18 }} />
@@ -422,6 +366,42 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
         </div>
       </section>
 
+
+      {/* ── Three ways to connect ─────────────────────────────────────── */}
+      <section className="py-16 px-6 relative overflow-hidden" style={{ backgroundColor: DARKER }}>
+        {/* Particle video background */}
+        <video autoPlay loop muted playsInline aria-hidden="true"
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%',
+            objectFit: 'cover', objectPosition: 'center', opacity: 0.18, pointerEvents: 'none' }}>
+          <source src="/particles.mp4" type="video/mp4" />
+        </video>
+        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none',
+          background: `radial-gradient(ellipse at center, rgba(37,37,37,0.55) 0%, rgba(37,37,37,0.82) 100%)` }} />
+        <div className="orb orb-orange orb-md absolute -bottom-20 -right-20" style={{ opacity: 0.15 }} />
+        <div className="relative max-w-6xl mx-auto" style={{ zIndex: 1 }}>
+          <AnimateIn className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-4">{t('connect.title')}</h2>
+            <p className="text-white/45 max-w-2xl mx-auto">{t('connect.subtitle')}</p>
+          </AnimateIn>
+          <div className="grid md:grid-cols-3 gap-6">
+            {pillars.map(({ icon: Icon, titleKey, bodyKey, highlight }, index) => (
+              <AnimateIn key={titleKey} delay={index * 120}>
+              <div className="rounded-2xl p-8 card-hover h-full"
+                style={{ backgroundColor: highlight ? `${ORANGE}12` : CARD,
+                  border: highlight ? `1px solid ${ORANGE}35` : '1px solid rgba(255,255,255,0.07)' }}>
+                <span className="step-number block mb-4">0{index + 1}</span>
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
+                  style={{ backgroundColor: highlight ? `${ORANGE}25` : `${ORANGE}18` }}>
+                  <Icon size={22} style={{ color: ORANGE }} />
+                </div>
+                <h3 className="text-lg font-black text-white uppercase mb-3">{t(titleKey)}</h3>
+                <p className="text-sm text-white/55 leading-relaxed">{t(bodyKey)}</p>
+              </div>
+              </AnimateIn>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── Dual-path join CTA ────────────────────────────────────────── */}
       <section id="about" className="py-16 px-6" style={{ backgroundColor: DARK }}>
