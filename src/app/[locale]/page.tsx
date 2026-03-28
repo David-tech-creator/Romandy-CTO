@@ -247,7 +247,14 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
             <div>
               <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-2">{t('events.headline')}</h2>
-              <p className="text-white/40">{t('events.headlineSub')}</p>
+              <p className="text-white/40 mb-3">{t('events.headlineSub')}</p>
+              <Link
+                href={`/${locale}/events/${UPCOMING_EVENT.slug}`}
+                className="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors hover:text-white"
+                style={{ color: ORANGE }}
+              >
+                {t('nextEvent.badge')} → {locale === 'fr' ? UPCOMING_EVENT.titleFr : UPCOMING_EVENT.title}
+              </Link>
             </div>
             <Link
               href={`/${locale}/events`}
