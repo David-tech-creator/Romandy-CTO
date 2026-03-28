@@ -505,9 +505,20 @@ export default async function AgenticCommercePage({
               </div>
             </div>
 
-            {/* Right — Agent Network SVG */}
+            {/* Right — AI agent mascot */}
             <div className="hidden lg:flex items-center justify-center" style={{ position: 'relative', zIndex: 1 }}>
-              <AgentNetworkSVG />
+              <img
+                src="/agentic6.jpg"
+                alt="AI agent"
+                style={{
+                  width: '100%',
+                  maxWidth: 420,
+                  height: 'auto',
+                  borderRadius: '1.5rem',
+                  objectFit: 'cover',
+                  filter: 'drop-shadow(0 0 48px rgba(200,131,74,0.35))',
+                }}
+              />
             </div>
           </div>
         </div>
@@ -738,8 +749,7 @@ export default async function AgenticCommercePage({
           {/* Timeline */}
           <div className="flex flex-col mb-16">
             {([
-              { time: '19:00', label: 'Doors open', sub: 'Networking & welcome drinks', highlight: false },
-              { time: '19:30', label: 'Introduction to Agentic Commerce', sub: 'A short framing presentation to level-set the room on where we are today', highlight: false },
+              { time: '19:00', label: 'Introduction to Agentic Commerce', sub: 'A short framing presentation to level-set the room on where we are today', highlight: false },
               { time: '19:50', label: 'Panel Discussion', sub: 'Architecture · Strategy · The luxury paradox. Open, conversational, practitioner-led.', highlight: true },
               { time: '20:45', label: 'Open Q&A', sub: 'The room drives the conversation', highlight: false },
               { time: '21:00', label: 'Drinks & Networking', sub: 'Continue the conversation informally', highlight: false },
@@ -775,6 +785,15 @@ export default async function AgenticCommercePage({
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Visual break */}
+          <div className="mb-14 rounded-2xl overflow-hidden">
+            <img
+              src="/agentic2.jpg"
+              alt="The evening ahead"
+              style={{ width: '100%', height: 260, objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+            />
           </div>
 
           {/* Two lenses */}
@@ -907,6 +926,17 @@ export default async function AgenticCommercePage({
       {/* REGISTER CTA                                                  */}
       {/* ══════════════════════════════════════════════════════════════ */}
       <section className="py-24 px-6 relative overflow-hidden" style={{ backgroundColor: DARK }}>
+        {/* Lightbulb background image */}
+        <img
+          src="/agentic5.jpeg"
+          alt=""
+          aria-hidden="true"
+          style={{
+            position: 'absolute', inset: 0, width: '100%', height: '100%',
+            objectFit: 'cover', objectPosition: 'center',
+            opacity: 0.12, pointerEvents: 'none',
+          }}
+        />
         <div className="orb orb-orange orb-lg" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', opacity: 0.20 }} />
 
         <div className="relative max-w-2xl mx-auto text-center">
