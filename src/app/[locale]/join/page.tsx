@@ -15,10 +15,7 @@ export default function JoinPage({ params: { locale } }: { params: { locale: str
   return (
     <div
       className="min-h-screen"
-      style={{
-        position: 'relative',
-        backgroundColor: '#111',
-      }}
+      style={{ position: 'relative', backgroundColor: '#111' }}
     >
       {/* Background image */}
       <img
@@ -36,7 +33,7 @@ export default function JoinPage({ params: { locale } }: { params: { locale: str
         }}
       />
 
-      {/* Dark gradient overlay — heavier at top where text is */}
+      {/* Overlay */}
       <div style={{
         position: 'absolute',
         inset: 0,
@@ -46,31 +43,32 @@ export default function JoinPage({ params: { locale } }: { params: { locale: str
 
       {/* Content */}
       <div style={{ position: 'relative', zIndex: 10 }}>
-        <div className="max-w-5xl mx-auto px-6 pt-10 pb-16">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-6 sm:pt-10 pb-12 sm:pb-16">
 
           <Link
             href={`/${locale}`}
-            className="inline-flex items-center gap-2 text-sm mb-10 text-white/40 hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm mb-6 sm:mb-10 text-white/40 hover:text-white transition-colors"
           >
-            <ArrowLeft size={14} /> {t('register.back')}
+            <ArrowLeft size={12} /> {t('register.back')}
           </Link>
 
-          <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-start">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-start">
 
             {/* Left: info */}
             <div>
-              <div className="mb-8">
+              <div className="mb-4 sm:mb-8">
                 <BrandLockup locale={locale} size="lg" linked={false} />
               </div>
 
-              <h1 className="text-4xl font-black text-white uppercase leading-tight mb-4">
+              <h1 className="text-3xl sm:text-4xl font-black text-white uppercase leading-tight mb-3 sm:mb-4">
                 {t('join.title')}
               </h1>
-              <p className="text-white/70 leading-relaxed mb-10 text-lg">
+              <p className="text-white/70 leading-relaxed mb-6 sm:mb-10 text-base sm:text-lg">
                 {t('join.subtitle')}
               </p>
 
-              <div className="flex flex-col gap-5 mb-8">
+              {/* Benefits — hidden on mobile to keep it clean */}
+              <div className="hidden sm:flex flex-col gap-5 mb-8">
                 {[
                   { icon: Calendar, text: t('join.benefit1') },
                   { icon: Zap, text: t('join.benefit2') },
@@ -92,7 +90,11 @@ export default function JoinPage({ params: { locale } }: { params: { locale: str
             {/* Right: form */}
             <div
               className="rounded-2xl p-5 sm:p-8"
-              style={{ backgroundColor: `${DARKER}e6`, border: `1px solid rgba(255,255,255,0.08)`, backdropFilter: 'blur(12px)' }}
+              style={{
+                backgroundColor: `${DARKER}e6`,
+                border: `1px solid rgba(255,255,255,0.08)`,
+                backdropFilter: 'blur(12px)',
+              }}
             >
               <JoinForm locale={locale} />
             </div>
