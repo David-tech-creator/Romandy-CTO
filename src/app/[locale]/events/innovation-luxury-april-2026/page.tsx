@@ -160,6 +160,9 @@ function AgentNetworkSVG() {
       <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
         <circle cx="1" cy="1" r="0.8" fill="rgba(255,255,255,0.04)" />
       </pattern>
+      <clipPath id="robot-clip">
+        <circle cx="240" cy="190" r="36" />
+      </clipPath>
       <rect width="480" height="380" fill="url(#dots)" />
 
       {/* ── Lines: User → Agent ── */}
@@ -211,15 +214,19 @@ function AgentNetworkSVG() {
       <text x="52" y="197" textAnchor="middle" fill="rgba(255,255,255,0.35)" fontSize="6.5" fontFamily="system-ui,sans-serif">(intent)</text>
 
       {/* ── Agent node (center, glowing) ── */}
-      {/* outer glow */}
+      {/* outer glow pulse */}
       <circle cx="240" cy="190" r="56" fill="rgba(200,131,74,0.08)" className="ac-glow" />
       {/* mid ring */}
       <circle cx="240" cy="190" r="44" fill={DARKER} stroke="rgba(200,131,74,0.50)" strokeWidth="1.5" />
-      {/* inner fill */}
-      <circle cx="240" cy="190" r="38" fill={DARKER} />
-      {/* label */}
-      <text x="240" y="184" textAnchor="middle" fill={ORANGE} fontSize="9.5" fontWeight="900" fontFamily="system-ui,sans-serif" letterSpacing="2">AI</text>
-      <text x="240" y="197" textAnchor="middle" fill={ORANGE} fontSize="8.5" fontWeight="700" fontFamily="system-ui,sans-serif" letterSpacing="1">AGENT</text>
+      {/* robot image clipped to circle */}
+      <image
+        href="/agentic6.jpg"
+        x="204" y="154" width="72" height="72"
+        clipPath="url(#robot-clip)"
+        preserveAspectRatio="xMidYMid slice"
+      />
+      {/* amber ring over image */}
+      <circle cx="240" cy="190" r="36" fill="none" stroke={ORANGE} strokeWidth="1.5" opacity="0.6" />
 
       {/* ── Endpoint nodes ── */}
       {/* Brand Agent */}
@@ -505,20 +512,9 @@ export default async function AgenticCommercePage({
               </div>
             </div>
 
-            {/* Right — AI agent mascot */}
+            {/* Right — Agent Network with robot at center */}
             <div className="hidden lg:flex items-center justify-center" style={{ position: 'relative', zIndex: 1 }}>
-              <img
-                src="/agentic6.jpg"
-                alt="AI agent"
-                style={{
-                  width: '100%',
-                  maxWidth: 420,
-                  height: 'auto',
-                  borderRadius: '1.5rem',
-                  objectFit: 'cover',
-                  filter: 'drop-shadow(0 0 48px rgba(200,131,74,0.35))',
-                }}
-              />
+              <AgentNetworkSVG />
             </div>
           </div>
         </div>
