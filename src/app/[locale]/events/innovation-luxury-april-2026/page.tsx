@@ -355,9 +355,9 @@ export default async function AgenticCommercePage({
             className="text-2xl sm:text-3xl lg:text-[2.4rem] font-black text-white leading-tight mb-6"
             style={{ borderLeft: `3px solid ${ORANGE}`, paddingLeft: '1.5rem' }}
           >
-            "AI becomes the compass,<br />
+            &ldquo;AI becomes the compass,<br />
             but the boutique<br />
-            remains the destination."
+            remains the destination.&rdquo;
           </blockquote>
           <p className="text-sm mb-12" style={{ color: 'rgba(255,255,255,0.32)', paddingLeft: '1.5rem' }}>
             — Pedro López-Belmonte, Technology Strategist · Top Luxury Speaker of the World 2026
@@ -367,7 +367,7 @@ export default async function AgenticCommercePage({
             className="text-base sm:text-lg font-semibold text-white/60 leading-relaxed mb-4 italic"
             style={{ borderLeft: `2px solid rgba(200,131,74,0.25)`, paddingLeft: '1.5rem' }}
           >
-            "Companies have spent decades refining consumer journeys, fine-tuning every click, scroll, and tap. But in the era of agentic commerce, the consumer no longer travels alone. Their digital proxies now navigate the commerce ecosystem, making millions of microdecisions daily."
+            &ldquo;Companies have spent decades refining consumer journeys, fine-tuning every click, scroll, and tap. But in the era of agentic commerce, the consumer no longer travels alone. Their digital proxies now navigate the commerce ecosystem, making millions of microdecisions daily.&rdquo;
           </blockquote>
           <p className="text-sm mb-16" style={{ color: 'rgba(255,255,255,0.28)', paddingLeft: '1.5rem' }}>
             — Becca Coggins, Senior Partner &amp; Global Leader, Retail &amp; Consumer Practices
@@ -375,12 +375,12 @@ export default async function AgenticCommercePage({
 
           <p className="text-lg leading-relaxed mb-4" style={{ color: 'rgba(255,255,255,0.62)', maxWidth: '42rem' }}>
             Pedro used three AI agents to buy a luxury coat. They excelled at discovery — then hit a wall. Incomplete 
-            product data. No direct commerce integrations. No trust. He ended up doing what he's always done: visiting 
+            product data. No direct commerce integrations. No trust. He ended up doing what he&apos;s always done: visiting
             the boutique.
           </p>
           <p className="text-lg leading-relaxed mb-16" style={{ color: 'rgba(255,255,255,0.62)', maxWidth: '42rem' }}>
-            That gap between promise and reality is exactly where technology leaders in luxury must act. Agentic commerce 
-            isn't coming — it's already here, fragmented, and waiting for the right architecture.
+            That gap between promise and reality is exactly where technology leaders in luxury must act. Agentic commerce
+            isn&apos;t coming — it&apos;s already here, fragmented, and waiting for the right architecture.
           </p>
 
           <div className="gradient-rule mb-16" />
@@ -530,7 +530,7 @@ export default async function AgenticCommercePage({
             Discussion Themes
           </p>
           <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-14">
-            What we'll unpack
+            What we&apos;ll unpack
           </h2>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -651,7 +651,7 @@ export default async function AgenticCommercePage({
                     <strong className="text-white/90">Top Luxury Speakers of the World 2026</strong>
                     {' '}by the World Luxury Chamber of Commerce alongside 59 global peers.
                     His work on agentic commerce — including first-hand experiments using AI agents to navigate 
-                    luxury retail — forms the backbone of this evening's discussion.
+                    luxury retail — forms the backbone of this evening&apos;s discussion.
                   </p>
 
                   <div className="flex flex-wrap gap-2">
