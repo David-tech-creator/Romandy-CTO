@@ -1,11 +1,5 @@
 import { unstable_setRequestLocale } from 'next-intl/server'
-import dynamic from 'next/dynamic'
 import Link from 'next/link'
-
-const BB8Mascot = dynamic(() => import('@/components/BB8Mascot'), {
-  ssr: false,
-  loading: () => <div style={{ width: '100%', height: 420 }} />,
-})
 import {
   ArrowLeft, ArrowRight, Calendar, Clock, MapPin, Users,
   Shield, Cpu, Database, Network, Lock, Sparkles,
@@ -409,17 +403,30 @@ export default async function AgenticCommercePage({
           overflow: 'hidden',
         }}
       >
-        {/* Grid overlay */}
+        {/* Hero background image */}
+        <img
+          src="/agentic.png"
+          alt=""
+          aria-hidden="true"
+          style={{
+            position: 'absolute', inset: 0, width: '100%', height: '100%',
+            objectFit: 'cover', objectPosition: 'center',
+            opacity: 0.18, pointerEvents: 'none',
+          }}
+        />
+        {/* Gradient scrim — ensures left text stays legible */}
+        <div style={{
+          position: 'absolute', inset: 0, pointerEvents: 'none',
+          background: 'linear-gradient(to right, rgba(37,37,37,0.97) 45%, rgba(37,37,37,0.75) 70%, rgba(37,37,37,0.4) 100%)',
+        }} />
+        {/* Dot grid overlay */}
         <div style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
           backgroundImage: 'radial-gradient(circle, rgba(200,131,74,0.07) 1px, transparent 1px)',
           backgroundSize: '30px 30px',
         }} />
-        {/* Orbs */}
-        <div className="orb orb-orange orb-lg" style={{ position: 'absolute', top: -120, left: '55%', opacity: 0.13, transform: 'translateX(-50%)' }} />
-        <div className="orb orb-orange orb-sm" style={{ position: 'absolute', bottom: -60, left: '5%', opacity: 0.10 }} />
 
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-6" style={{ position: 'relative', zIndex: 1 }}>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
 
             {/* Left — text */}
@@ -498,10 +505,138 @@ export default async function AgenticCommercePage({
               </div>
             </div>
 
-            {/* Right — BB-8 3D mascot */}
-            <div className="hidden lg:flex items-center justify-center">
-              <BB8Mascot />
+            {/* Right — Agent Network SVG */}
+            <div className="hidden lg:flex items-center justify-center" style={{ position: 'relative', zIndex: 1 }}>
+              <AgentNetworkSVG />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════ */}
+      {/* SPEAKERS                                                      */}
+      {/* ══════════════════════════════════════════════════════════════ */}
+      <section className="py-20 px-6 relative overflow-hidden" style={{ backgroundColor: DARKER }}>
+        <div className="sonar-ring" style={{ opacity: 0.30 }} />
+        <div className="sonar-ring sonar-ring-2" style={{ opacity: 0.30 }} />
+        <div className="sonar-ring sonar-ring-3" style={{ opacity: 0.30 }} />
+
+        <div className="max-w-4xl mx-auto relative">
+          <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: ORANGE }}>
+            The Speakers
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-14">
+            Two perspectives, one evening
+          </h2>
+
+          <div className="flex flex-col gap-6">
+
+            {/* ── Pedro ─────────────────────────────────────────────── */}
+            <div
+              className="ac-speaker-card rounded-2xl p-8"
+              style={{ backgroundColor: DARK, border: '1px solid rgba(255,255,255,0.08)' }}
+            >
+              <div className="flex flex-col sm:flex-row gap-6 items-start">
+                <div className="shrink-0">
+                  <div className="w-16 h-16 rounded-2xl overflow-hidden" style={{ border: `1px solid ${ORANGE}40` }}>
+                    <img
+                      src="/pedro.png"
+                      alt="Pedro López-Belmonte"
+                      width={64}
+                      height={64}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(100%) contrast(1.05)' }}
+                    />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-center gap-3 mb-2">
+                    <h3 className="text-xl font-black text-white">Pedro López-Belmonte</h3>
+                    <span
+                      className="text-xs font-bold tracking-wider uppercase px-3 py-1 rounded-full"
+                      style={{ backgroundColor: `${ORANGE}22`, color: ORANGE }}
+                    >
+                      CTO &amp; Architecture Lens
+                    </span>
+                  </div>
+                  <p className="text-sm font-semibold mb-5" style={{ color: 'rgba(255,255,255,0.38)' }}>
+                    Technology Strategist · Former Innovation Lead, Richemont Group
+                  </p>
+                  <p className="text-sm leading-relaxed mb-4" style={{ color: 'rgba(255,255,255,0.60)' }}>
+                    For over twelve years at Richemont — home to Cartier, Vacheron Constantin, IWC, and other Maisons —
+                    Pedro led technology innovation initiatives focused on digital identity, blockchain, and product
+                    traceability, helping secure centuries-old legacies while preparing them for the digital paradigm.
+                  </p>
+                  <p className="text-sm leading-relaxed mb-6" style={{ color: 'rgba(255,255,255,0.60)' }}>
+                    Named among the{' '}
+                    <strong className="text-white/90">Top Luxury Speakers of the World 2026</strong>
+                    {' '}by the World Luxury Chamber of Commerce alongside 59 global peers.
+                    His work on agentic commerce — including first-hand experiments using AI agents to navigate
+                    luxury retail — forms the backbone of this evening&apos;s discussion.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {['Blockchain', 'Digital Product Passports', 'Luxury Tech', 'Agentic Commerce', 'Digital Identity', 'Richemont'].map((tag) => (
+                      <span key={tag} className="text-xs px-3 py-1.5 rounded-full"
+                        style={{ backgroundColor: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.45)', border: '1px solid rgba(255,255,255,0.09)' }}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* ── Frédéric ──────────────────────────────────────────── */}
+            <div
+              className="ac-speaker-card rounded-2xl p-8"
+              style={{ backgroundColor: DARK, border: '1px solid rgba(255,255,255,0.08)' }}
+            >
+              <div className="flex flex-col sm:flex-row gap-6 items-start">
+                <div className="shrink-0">
+                  <div className="w-16 h-16 rounded-2xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.12)' }}>
+                    <img
+                      src="/frederic.png"
+                      alt="Frédéric Desmaison"
+                      width={64}
+                      height={64}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(100%) contrast(1.05)' }}
+                    />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-center gap-3 mb-2">
+                    <h3 className="text-xl font-black text-white">Frédéric Desmaison</h3>
+                    <span
+                      className="text-xs font-bold tracking-wider uppercase px-3 py-1 rounded-full"
+                      style={{ backgroundColor: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.50)' }}
+                    >
+                      Strategy &amp; Technology Lens
+                    </span>
+                  </div>
+                  <p className="text-sm font-semibold mb-5" style={{ color: 'rgba(255,255,255,0.38)' }}>
+                    Technology Director &amp; Senior Advisor
+                  </p>
+                  <p className="text-sm leading-relaxed mb-4" style={{ color: 'rgba(255,255,255,0.60)' }}>
+                    A passionate digital executive who combines strategic vision with high-quality execution,
+                    Frédéric brings people and technology to serve end customers. He looks beyond the technical
+                    architecture to ask the harder question: is this the right move for the business and the customer?
+                  </p>
+                  <p className="text-sm leading-relaxed mb-6" style={{ color: 'rgba(255,255,255,0.60)' }}>
+                    His perspective grounds the discussion in operational reality — the challenges of transition,
+                    the expectations of luxury consumers, and the leadership required to navigate a paradigm shift
+                    without losing what makes a brand irreplaceable.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {['Digital Strategy', 'Technology Leadership', 'Commerce Architecture', 'Customer Experience', 'Executive Advisory'].map((tag) => (
+                      <span key={tag} className="text-xs px-3 py-1.5 rounded-full"
+                        style={{ backgroundColor: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.45)', border: '1px solid rgba(255,255,255,0.09)' }}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -698,15 +833,6 @@ export default async function AgenticCommercePage({
             What we&apos;ll unpack
           </h2>
 
-          {/* Visual banner */}
-          <div className="mb-10 rounded-2xl overflow-hidden">
-            <img
-              src="/agentic3.avif"
-              alt="Agentic commerce landscape"
-              style={{ width: '100%', height: 240, objectFit: 'cover', objectPosition: 'center', display: 'block', opacity: 0.85 }}
-            />
-          </div>
-
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {([
               {
@@ -765,170 +891,17 @@ export default async function AgenticCommercePage({
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* ══════════════════════════════════════════════════════════════ */}
-      {/* SPEAKERS                                                      */}
-      {/* ══════════════════════════════════════════════════════════════ */}
-      <section className="py-20 px-6 relative overflow-hidden" style={{ backgroundColor: DARKER }}>
-        {/* Sonar rings — subtle */}
-        <div className="sonar-ring" style={{ opacity: 0.30 }} />
-        <div className="sonar-ring sonar-ring-2" style={{ opacity: 0.30 }} />
-        <div className="sonar-ring sonar-ring-3" style={{ opacity: 0.30 }} />
-
-        <div className="max-w-4xl mx-auto relative">
-          <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: ORANGE }}>
-            The Speakers
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-14">
-            Two perspectives, one evening
-          </h2>
-
-          <div className="flex flex-col gap-6">
-
-            {/* ── Pedro ─────────────────────────────────────────────── */}
-            <div
-              className="ac-speaker-card rounded-2xl p-8"
-              style={{ backgroundColor: DARK, border: '1px solid rgba(255,255,255,0.08)' }}
-            >
-              <div className="flex flex-col sm:flex-row gap-6 items-start">
-                <div className="shrink-0">
-                  <div className="w-16 h-16 rounded-2xl overflow-hidden" style={{ border: `1px solid ${ORANGE}40` }}>
-                    <img
-                      src="/pedro.png"
-                      alt="Pedro López-Belmonte"
-                      width={64}
-                      height={64}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(100%) contrast(1.05)' }}
-                    />
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <div className="flex flex-wrap items-center gap-3 mb-2">
-                    <h3 className="text-xl font-black text-white">Pedro López-Belmonte</h3>
-                    <span
-                      className="text-xs font-bold tracking-wider uppercase px-3 py-1 rounded-full"
-                      style={{ backgroundColor: `${ORANGE}22`, color: ORANGE }}
-                    >
-                      CTO &amp; Architecture Lens
-                    </span>
-                  </div>
-                  <p className="text-sm font-semibold mb-5" style={{ color: 'rgba(255,255,255,0.38)' }}>
-                    Technology Strategist · Former Innovation Lead, Richemont Group
-                  </p>
-
-                  <p className="text-sm leading-relaxed mb-4" style={{ color: 'rgba(255,255,255,0.60)' }}>
-                    For over twelve years at Richemont — home to Cartier, Vacheron Constantin, IWC, and other Maisons — 
-                    Pedro led technology innovation initiatives focused on digital identity, blockchain, and product 
-                    traceability, helping secure centuries-old legacies while preparing them for the digital paradigm.
-                  </p>
-                  <p className="text-sm leading-relaxed mb-6" style={{ color: 'rgba(255,255,255,0.60)' }}>
-                    Named among the{' '}
-                    <strong className="text-white/90">Top Luxury Speakers of the World 2026</strong>
-                    {' '}by the World Luxury Chamber of Commerce alongside 59 global peers.
-                    His work on agentic commerce — including first-hand experiments using AI agents to navigate 
-                    luxury retail — forms the backbone of this evening&apos;s discussion.
-                  </p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {['Blockchain', 'Digital Product Passports', 'Luxury Tech', 'Agentic Commerce', 'Digital Identity', 'Richemont'].map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs px-3 py-1.5 rounded-full"
-                        style={{
-                          backgroundColor: 'rgba(255,255,255,0.05)',
-                          color: 'rgba(255,255,255,0.45)',
-                          border: '1px solid rgba(255,255,255,0.09)',
-                        }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* ── Frédéric ──────────────────────────────────────────── */}
-            <div
-              className="ac-speaker-card rounded-2xl p-8"
-              style={{ backgroundColor: DARK, border: '1px solid rgba(255,255,255,0.08)' }}
-            >
-              <div className="flex flex-col sm:flex-row gap-6 items-start">
-                <div className="shrink-0">
-                  <div className="w-16 h-16 rounded-2xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.12)' }}>
-                    <img
-                      src="/frederic.png"
-                      alt="Frédéric Desmaison"
-                      width={64}
-                      height={64}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(100%) contrast(1.05)' }}
-                    />
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <div className="flex flex-wrap items-center gap-3 mb-2">
-                    <h3 className="text-xl font-black text-white">Frédéric Desmaison</h3>
-                    <span
-                      className="text-xs font-bold tracking-wider uppercase px-3 py-1 rounded-full"
-                      style={{ backgroundColor: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.50)' }}
-                    >
-                      Strategy &amp; Technology Lens
-                    </span>
-                  </div>
-                  <p className="text-sm font-semibold mb-5" style={{ color: 'rgba(255,255,255,0.38)' }}>
-                    Technology Director &amp; Senior Advisor
-                  </p>
-
-                  <p className="text-sm leading-relaxed mb-4" style={{ color: 'rgba(255,255,255,0.60)' }}>
-                    A passionate digital executive who combines strategic vision with high-quality execution, 
-                    Frédéric brings people and technology to serve end customers. He looks beyond the technical 
-                    architecture to ask the harder question: is this the right move for the business and the customer?
-                  </p>
-                  <p className="text-sm leading-relaxed mb-6" style={{ color: 'rgba(255,255,255,0.60)' }}>
-                    His perspective grounds the discussion in operational reality — the challenges of transition, 
-                    the expectations of luxury consumers, and the leadership required to navigate a paradigm shift 
-                    without losing what makes a brand irreplaceable.
-                  </p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {['Digital Strategy', 'Technology Leadership', 'Commerce Architecture', 'Customer Experience', 'Executive Advisory'].map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs px-3 py-1.5 rounded-full"
-                        style={{
-                          backgroundColor: 'rgba(255,255,255,0.05)',
-                          color: 'rgba(255,255,255,0.45)',
-                          border: '1px solid rgba(255,255,255,0.09)',
-                        }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════════ */}
-      {/* NETWORKING VISUAL                                             */}
-      {/* ══════════════════════════════════════════════════════════════ */}
-      <div style={{ backgroundColor: DARK }}>
-        <div className="max-w-6xl mx-auto px-6 py-6">
-          <div className="rounded-2xl overflow-hidden">
+          {/* Visual — AI winding the human (automation paradox) */}
+          <div className="mt-12 rounded-2xl overflow-hidden">
             <img
-              src="/agentic.png"
-              alt="Tech leaders networking"
-              style={{ width: '100%', height: 320, objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+              src="/agentic3.jpg"
+              alt="AI agents taking control of commerce"
+              style={{ width: '100%', height: 300, objectFit: 'cover', objectPosition: 'center 30%', display: 'block' }}
             />
           </div>
         </div>
-      </div>
+      </section>
 
       {/* ══════════════════════════════════════════════════════════════ */}
       {/* REGISTER CTA                                                  */}
