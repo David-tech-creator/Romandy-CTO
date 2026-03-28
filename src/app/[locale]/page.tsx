@@ -87,8 +87,8 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
         }} />
         {/* Bottom fade into next section */}
         <div style={{
-          position: 'absolute', bottom: 0, left: 0, right: 0, height: 120,
-          background: `linear-gradient(to bottom, transparent, ${DARKER})`,
+          position: 'absolute', bottom: 0, left: 0, right: 0, height: 200,
+          background: `linear-gradient(to bottom, transparent, ${DARK})`,
           pointerEvents: 'none',
         }} />
 
@@ -187,7 +187,7 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
         {/* Subtle dark gradient only at top + bottom edges for blending */}
         <div style={{
           position: 'absolute', inset: 0, pointerEvents: 'none',
-          background: `linear-gradient(to bottom, ${DARK} 0%, transparent 18%, transparent 82%, ${DARKER} 100%)`,
+          background: `linear-gradient(to bottom, ${DARK} 0%, transparent 15%, transparent 85%, ${DARK} 100%)`,
         }} />
         {/* Center text backdrop for legibility */}
         <div className="relative w-full py-24" style={{ zIndex: 1 }}>
@@ -214,7 +214,7 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
       </section>
 
       {/* ── Upcoming event ────────────────────────────────────────────── */}
-      <section id="next-event" className="relative overflow-hidden" style={{ backgroundColor: DARK, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+      <section id="next-event" className="relative overflow-hidden" style={{ backgroundColor: DARK }}>
         <div className="orb orb-orange orb-md absolute -top-10 -left-10" style={{ opacity: 0.18 }} />
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div
@@ -259,10 +259,16 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
             </div>
           </div>
         </div>
+        {/* Slow fade back to DARKER after the warm section */}
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0, height: 220,
+          background: `linear-gradient(to bottom, transparent, ${DARKER})`,
+          pointerEvents: 'none',
+        }} />
       </section>
 
       {/* ── Topics ────────────────────────────────────────────────────── */}
-      <section className="py-16 px-6" style={{ backgroundColor: DARKER, borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+      <section className="py-16 px-6" style={{ backgroundColor: DARKER }}>
         <div className="max-w-6xl mx-auto">
           <AnimateIn className="text-center mb-10">
             <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-4">{t('topics.title')}</h2>
