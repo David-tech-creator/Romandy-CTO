@@ -199,12 +199,29 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
 
       {/* ── Three ways to connect ─────────────────────────────────────── */}
       <section className="py-16 px-6 relative overflow-hidden" style={{ backgroundColor: DARKER }}>
-        {/* Sonar heartbeat rings — pulse metaphor */}
-        <div className="sonar-ring" />
-        <div className="sonar-ring sonar-ring-2" />
-        <div className="sonar-ring sonar-ring-3" />
-        <div className="orb orb-orange orb-md absolute -bottom-20 -right-20" style={{ opacity: 0.20 }} />
-        <div className="max-w-6xl mx-auto">
+        {/* Particle video background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          aria-hidden="true"
+          style={{
+            position: 'absolute', inset: 0,
+            width: '100%', height: '100%',
+            objectFit: 'cover', objectPosition: 'center',
+            opacity: 0.18, pointerEvents: 'none',
+          }}
+        >
+          <source src="/particles.mp4" type="video/mp4" />
+        </video>
+        {/* Scrim to keep cards legible */}
+        <div style={{
+          position: 'absolute', inset: 0, pointerEvents: 'none',
+          background: `radial-gradient(ellipse at center, rgba(37,37,37,0.55) 0%, rgba(37,37,37,0.82) 100%)`,
+        }} />
+        <div className="orb orb-orange orb-md absolute -bottom-20 -right-20" style={{ opacity: 0.15 }} />
+        <div className="relative max-w-6xl mx-auto" style={{ zIndex: 1 }}>
           <AnimateIn className="text-center mb-10">
             <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-4">{t('connect.title')}</h2>
             <p className="text-white/45 max-w-2xl mx-auto">{t('connect.subtitle')}</p>
