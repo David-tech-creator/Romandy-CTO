@@ -452,11 +452,20 @@ export default async function AgenticCommercePage({
                 Commerce
               </h1>
               <h2
-                className="font-black uppercase mb-10 ac-h3"
+                className="font-black uppercase mb-8 ac-h3"
                 style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.8rem)', color: 'rgba(255,255,255,0.50)', lineHeight: 1.2 }}
               >
                 & the Luxury Industry
               </h2>
+
+              <div className="mb-10 ac-h3" style={{ maxWidth: '38rem' }}>
+                <p className="text-base leading-relaxed mb-3" style={{ color: 'rgba(255,255,255,0.65)' }}>
+                  AI agents can now research products, negotiate prices, and complete purchases autonomously — without a consumer ever visiting your site. A $3–5 trillion shift is already underway.
+                </p>
+                <p className="text-base leading-relaxed" style={{ color: 'rgba(255,255,255,0.42)' }}>
+                  For luxury, the stakes are different. When an agent becomes the customer, what happens to the story, the emotion, and the human connection that make a brand irreplaceable?
+                </p>
+              </div>
 
               <div className="flex flex-col gap-3 mb-10 ac-h4">
                 {[
