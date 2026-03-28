@@ -51,7 +51,7 @@ export function eventRegistrationEmail({
         <!-- Building hero image -->
         <tr>
           <td style="padding:0;line-height:0;">
-            <img src="https://www.ctoromandy.ch/building2.jpg"
+            <img src="https://www.ctoromandy.ch/building.jpeg"
               width="600" alt="${eventName}"
               style="width:100%;max-width:600px;height:auto;display:block;border-radius:16px 16px 0 0;filter:brightness(0.75);" />
           </td>
