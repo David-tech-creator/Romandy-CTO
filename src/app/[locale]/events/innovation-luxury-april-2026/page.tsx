@@ -1,5 +1,11 @@
 import { unstable_setRequestLocale } from 'next-intl/server'
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
+
+const BB8Mascot = dynamic(() => import('@/components/BB8Mascot'), {
+  ssr: false,
+  loading: () => <div style={{ width: '100%', height: 420 }} />,
+})
 import {
   ArrowLeft, ArrowRight, Calendar, Clock, MapPin, Users,
   Shield, Cpu, Database, Network, Lock, Sparkles,
@@ -483,9 +489,9 @@ export default async function AgenticCommercePage({
               </div>
             </div>
 
-            {/* Right — Agent mascot */}
+            {/* Right — BB-8 3D mascot */}
             <div className="hidden lg:flex items-center justify-center">
-              <AgentMascotSVG />
+              <BB8Mascot />
             </div>
           </div>
         </div>
