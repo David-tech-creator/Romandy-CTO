@@ -7,6 +7,7 @@ import {
 import { auth } from '@clerk/nextjs/server'
 import { createClient } from '@supabase/supabase-js'
 import { BrandLockup } from '@/components/BrandLockup'
+import ScrollReveal from '@/components/ScrollReveal'
 
 const ORANGE = '#C8834A'
 const DARK = '#2D2D2D'
@@ -529,8 +530,11 @@ export default async function AgenticCommercePage({
           {/* 2-column: robot left, content right */}
           <div className="grid lg:grid-cols-[1fr_1.35fr] gap-12 items-start">
 
-            {/* Left — friendly robot image */}
-            <div className="hidden lg:flex items-center justify-center">
+            {/* Left — friendly robot image (sticky while cards scroll) */}
+            <div
+              className="hidden lg:flex items-center justify-center"
+              style={{ position: 'sticky', top: '6rem', alignSelf: 'start' }}
+            >
               <img
                 src="/friendlyrobot.png"
                 alt="Friendly robot mascot"
@@ -678,17 +682,19 @@ export default async function AgenticCommercePage({
             The Inflection Point
           </p>
 
-          <blockquote
-            className="text-2xl sm:text-3xl lg:text-[2.4rem] font-black text-white leading-tight mb-6"
-            style={{ borderLeft: `3px solid ${ORANGE}`, paddingLeft: '1.5rem' }}
-          >
-            &ldquo;AI becomes the compass,<br />
-            but the boutique<br />
-            remains the destination.&rdquo;
-          </blockquote>
-          <p className="text-sm mb-16" style={{ color: 'rgba(255,255,255,0.32)', paddingLeft: '1.5rem' }}>
-            — Pedro López-Belmonte, Technology Strategist · Top Luxury Speaker of the World 2026
-          </p>
+          <ScrollReveal delay={100}>
+            <blockquote
+              className="text-2xl sm:text-3xl lg:text-[2.4rem] font-black text-white leading-tight mb-6"
+              style={{ borderLeft: `3px solid ${ORANGE}`, paddingLeft: '1.5rem' }}
+            >
+              &ldquo;AI becomes the compass,<br />
+              but the boutique<br />
+              remains the destination.&rdquo;
+            </blockquote>
+            <p className="text-sm mb-16" style={{ color: 'rgba(255,255,255,0.32)', paddingLeft: '1.5rem' }}>
+              — Pedro López-Belmonte, Technology Strategist · Top Luxury Speaker of the World 2026
+            </p>
+          </ScrollReveal>
 
           {/* Visual — AI & commerce */}
           <div className="mb-16 rounded-2xl overflow-hidden" style={{ maxWidth: '42rem' }}>
@@ -729,20 +735,19 @@ export default async function AgenticCommercePage({
                 label: 'Agent-to-site · Agent-to-agent · Brokered agent · All emerging simultaneously',
                 source: 'How commerce flows today',
               },
-            ].map(({ value, label, source }) => (
-              <div
-                key={value}
-                className="rounded-2xl p-7"
-                style={{ backgroundColor: DARKER, border: '1px solid rgba(255,255,255,0.07)' }}
-              >
+            ].map(({ value, label, source }, i) => (
+              <ScrollReveal key={value} delay={i * 130}>
                 <div
-                  className="text-4xl sm:text-5xl font-black mb-3 text-gradient-orange"
+                  className="rounded-2xl p-7 h-full"
+                  style={{ backgroundColor: DARKER, border: '1px solid rgba(255,255,255,0.07)' }}
                 >
-                  {value}
+                  <div className="text-4xl sm:text-5xl font-black mb-3 text-gradient-orange">
+                    {value}
+                  </div>
+                  <p className="text-sm text-white/70 leading-snug mb-2">{label}</p>
+                  <p className="text-xs" style={{ color: 'rgba(255,255,255,0.28)' }}>{source}</p>
                 </div>
-                <p className="text-sm text-white/70 leading-snug mb-2">{label}</p>
-                <p className="text-xs" style={{ color: 'rgba(255,255,255,0.28)' }}>{source}</p>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -768,7 +773,8 @@ export default async function AgenticCommercePage({
               { time: '19:20', label: 'Panel Discussion & Open Q&A', sub: 'Architecture · Strategy · The luxury paradox. Open, conversational, practitioner-led — the room drives the conversation.', highlight: true },
               { time: '20:30', label: 'Drinks & Networking', sub: 'Continue the conversation informally', highlight: false },
             ] as const).map(({ time, label, sub, highlight }, i, arr) => (
-              <div key={time} className="flex gap-5 items-start">
+              <ScrollReveal key={time} delay={i * 120}>
+              <div className="flex gap-5 items-start">
                 {/* Dot + vertical line */}
                 <div className="flex flex-col items-center" style={{ width: 44, flexShrink: 0 }}>
                   <div
@@ -798,6 +804,7 @@ export default async function AgenticCommercePage({
                   </p>
                 </div>
               </div>
+              </ScrollReveal>
             ))}
           </div>
 
@@ -859,70 +866,82 @@ export default async function AgenticCommercePage({
         <div className="orb orb-orange orb-sm" style={{ position: 'absolute', top: 40, left: '5%', opacity: 0.08 }} />
 
         <div className="max-w-6xl mx-auto">
-          <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: ORANGE }}>
-            Discussion Themes
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-14">
-            What we&apos;ll unpack
-          </h2>
+          {/* 2-column sticky layout: pinned heading left, cards scrolling right */}
+          <div className="grid lg:grid-cols-[260px_1fr] gap-16 items-start">
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {([
-              {
-                Icon: Network,
-                num: '01',
-                title: 'From Omnichannel to Agent-Driven Architectures',
-                body: 'How do you re-architect a commerce stack built for humans browsing websites — not agents traversing APIs at scale?',
-              },
-              {
-                Icon: Shield,
-                num: '02',
-                title: 'Trust, Risks & Bottlenecks',
-                body: 'Who is responsible when an agent makes a wrong purchase? How do brands build agent-safe guardrails without killing the experience?',
-              },
-              {
-                Icon: Cpu,
-                num: '03',
-                title: 'Protocols: MCP, A2A, ACP',
-                body: 'The emerging technical standards enabling agent interoperability. What they are, what they still lack, and what adoption looks like in practice.',
-              },
-              {
-                Icon: Database,
-                num: '04',
-                title: 'Blockchain & Digital Product Passports',
-                body: 'Verified product data at the protocol level — not just marketing copy. On-chain provenance and traceability as the foundation for agent-ready luxury.',
-              },
-              {
-                Icon: Lock,
-                num: '05',
-                title: 'Is Your Brand Data Agent-Ready?',
-                body: 'Agents need structured, trusted, real-time data. Most luxury brands don\'t have it. What does "agent-ready" data infrastructure actually look like?',
-              },
-              {
-                Icon: Sparkles,
-                num: '06',
-                title: 'The Luxury Paradox',
-                body: 'Luxury sells on emotion, story, and human connection. Can an AI agent ever close that loop — or does the boutique always remain the destination?',
-              },
-            ] as const).map(({ Icon, num, title, body }) => (
-              <div
-                key={num}
-                className="ac-topic-card rounded-2xl p-6"
-                style={{ backgroundColor: DARKER, border: '1px solid rgba(255,255,255,0.07)' }}
-              >
-                <div className="flex items-start justify-between mb-5">
+            {/* Left — sticky section label */}
+            <div style={{ position: 'sticky', top: '6rem', alignSelf: 'start' }}>
+              <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: ORANGE }}>
+                Discussion Themes
+              </p>
+              <h2 className="text-3xl font-black text-white uppercase leading-tight">
+                What we&apos;ll unpack
+              </h2>
+              <p className="text-sm mt-4 leading-relaxed" style={{ color: 'rgba(255,255,255,0.35)' }}>
+                Six questions technology leaders in luxury need to answer now.
+              </p>
+            </div>
+
+            {/* Right — cards (scroll past the sticky heading) */}
+            <div className="grid sm:grid-cols-2 gap-4">
+              {([
+                {
+                  Icon: Network,
+                  num: '01',
+                  title: 'From Omnichannel to Agent-Driven Architectures',
+                  body: 'How do you re-architect a commerce stack built for humans browsing websites — not agents traversing APIs at scale?',
+                },
+                {
+                  Icon: Shield,
+                  num: '02',
+                  title: 'Trust, Risks & Bottlenecks',
+                  body: 'Who is responsible when an agent makes a wrong purchase? How do brands build agent-safe guardrails without killing the experience?',
+                },
+                {
+                  Icon: Cpu,
+                  num: '03',
+                  title: 'Protocols: MCP, A2A, ACP',
+                  body: 'The emerging technical standards enabling agent interoperability. What they are, what they still lack, and what adoption looks like in practice.',
+                },
+                {
+                  Icon: Database,
+                  num: '04',
+                  title: 'Blockchain & Digital Product Passports',
+                  body: 'Verified product data at the protocol level — not just marketing copy. On-chain provenance and traceability as the foundation for agent-ready luxury.',
+                },
+                {
+                  Icon: Lock,
+                  num: '05',
+                  title: 'Is Your Brand Data Agent-Ready?',
+                  body: 'Agents need structured, trusted, real-time data. Most luxury brands don\'t have it. What does "agent-ready" data infrastructure actually look like?',
+                },
+                {
+                  Icon: Sparkles,
+                  num: '06',
+                  title: 'The Luxury Paradox',
+                  body: 'Luxury sells on emotion, story, and human connection. Can an AI agent ever close that loop — or does the boutique always remain the destination?',
+                },
+              ] as const).map(({ Icon, num, title, body }, i) => (
+                <ScrollReveal key={num} delay={i * 80}>
                   <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center"
-                    style={{ backgroundColor: `${ORANGE}18` }}
+                    className="ac-topic-card rounded-2xl p-6 h-full"
+                    style={{ backgroundColor: DARKER, border: '1px solid rgba(255,255,255,0.07)' }}
                   >
-                    <Icon size={19} style={{ color: ORANGE }} />
+                    <div className="flex items-start justify-between mb-5">
+                      <div
+                        className="w-11 h-11 rounded-xl flex items-center justify-center"
+                        style={{ backgroundColor: `${ORANGE}18` }}
+                      >
+                        <Icon size={19} style={{ color: ORANGE }} />
+                      </div>
+                      <span className="text-xs font-black text-white/20">{num}</span>
+                    </div>
+                    <h3 className="font-black text-white text-sm leading-snug mb-3">{title}</h3>
+                    <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.42)' }}>{body}</p>
                   </div>
-                  <span className="text-xs font-black text-white/20">{num}</span>
-                </div>
-                <h3 className="font-black text-white text-sm leading-snug mb-3">{title}</h3>
-                <p className="text-xs leading-relaxed" style={{ color: 'rgba(255,255,255,0.42)' }}>{body}</p>
-              </div>
-            ))}
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
 
           {/* Visual — AI winding the human (automation paradox) */}
