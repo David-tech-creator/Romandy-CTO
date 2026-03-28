@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl'
 import { unstable_setRequestLocale } from 'next-intl/server'
 import Link from 'next/link'
-import { Calendar, MapPin, ArrowLeft } from 'lucide-react'
+import { Calendar, MapPin, ArrowLeft, ArrowRight } from 'lucide-react'
 import { RegisterForm } from '@/components/RegisterForm'
 import { UPCOMING_EVENT } from '@/lib/events'
 import { BrandLockup } from '@/components/BrandLockup'
@@ -81,6 +81,15 @@ export default function RegisterPage({ params: { locale } }: { params: { locale:
               </span>
               <span className="text-white/40 ml-2">{t('nextEvent.spotsNote')}</span>
             </div>
+
+            <Link
+              href={`/${locale}/events/${UPCOMING_EVENT.slug}`}
+              className="inline-flex items-center gap-2 mt-5 px-5 py-3 rounded-lg text-sm font-semibold transition-colors hover:bg-white/10 w-full justify-between"
+              style={{ border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.7)' }}
+            >
+              View full event details
+              <ArrowRight size={14} style={{ color: ORANGE }} />
+            </Link>
 
             {/* Editorial image — visual anchor beneath the event details */}
             <div
