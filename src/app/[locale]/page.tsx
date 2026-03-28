@@ -67,7 +67,6 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
         {/* Background video */}
         <video
           autoPlay
-          loop
           muted
           playsInline
           aria-hidden="true"
