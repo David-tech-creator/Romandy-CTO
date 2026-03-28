@@ -190,10 +190,12 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
           position: 'absolute', inset: 0, pointerEvents: 'none',
           background: `radial-gradient(ellipse at center, transparent 30%, ${DARK} 100%)`,
         }} />
-        <AnimateIn className="relative max-w-2xl mx-auto" style={{ zIndex: 1 }}>
-          <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-6">{t('who.title')}</h2>
-          <p className="text-lg text-white/55 leading-relaxed">{t('who.body')}</p>
-        </AnimateIn>
+        <div className="relative max-w-2xl mx-auto" style={{ zIndex: 1 }}>
+          <AnimateIn>
+            <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-6">{t('who.title')}</h2>
+            <p className="text-lg text-white/55 leading-relaxed">{t('who.body')}</p>
+          </AnimateIn>
+        </div>
         <div className="gradient-rule max-w-2xl mx-auto mt-16 relative" style={{ zIndex: 1 }} />
       </section>
 
