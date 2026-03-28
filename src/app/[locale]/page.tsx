@@ -172,24 +172,29 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
       </section>
 
       {/* ── Who's in the room ─────────────────────────────────────────── */}
-      <section className="py-20 px-6" style={{ backgroundColor: DARK }}>
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-          <AnimateIn>
-            <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-6">{t('who.title')}</h2>
-            <p className="text-lg text-white/50 leading-relaxed">{t('who.body')}</p>
-          </AnimateIn>
-          <AnimateIn delay={120}>
-            <div className="rounded-2xl overflow-hidden" style={{ aspectRatio: '16/9' }}>
-              <img
-                src="/ctomain3.jpeg"
-                alt=""
-                aria-hidden="true"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', filter: 'brightness(0.75) saturate(0.7)' }}
-              />
-            </div>
-          </AnimateIn>
-        </div>
-        <div className="gradient-rule max-w-6xl mx-auto mt-16" />
+      <section className="relative overflow-hidden py-28 px-6 text-center" style={{ backgroundColor: DARK }}>
+        {/* Background image — faded */}
+        <img
+          src="/agentic10.webp"
+          alt=""
+          aria-hidden="true"
+          style={{
+            position: 'absolute', inset: 0, width: '100%', height: '100%',
+            objectFit: 'cover', objectPosition: 'center',
+            opacity: 0.12, pointerEvents: 'none',
+            filter: 'saturate(0.5) brightness(0.7)',
+          }}
+        />
+        {/* Edge vignette to keep text crisp */}
+        <div style={{
+          position: 'absolute', inset: 0, pointerEvents: 'none',
+          background: `radial-gradient(ellipse at center, transparent 30%, ${DARK} 100%)`,
+        }} />
+        <AnimateIn className="relative max-w-2xl mx-auto" style={{ zIndex: 1 }}>
+          <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-6">{t('who.title')}</h2>
+          <p className="text-lg text-white/55 leading-relaxed">{t('who.body')}</p>
+        </AnimateIn>
+        <div className="gradient-rule max-w-2xl mx-auto mt-16 relative" style={{ zIndex: 1 }} />
       </section>
 
       {/* ── Three ways to connect ─────────────────────────────────────── */}
