@@ -181,7 +181,7 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
           style={{
             position: 'absolute', inset: 0, width: '100%', height: '100%',
             objectFit: 'cover', objectPosition: 'center',
-            opacity: 0.45, pointerEvents: 'none',
+            opacity: 0.22, pointerEvents: 'none',
           }}
         />
         {/* Subtle dark gradient only at top + bottom edges for blending */}
@@ -304,7 +304,7 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
         <img src="/conversations4.gif" alt="" aria-hidden="true" style={{
           position: 'absolute', inset: 0, width: '100%', height: '100%',
           objectFit: 'cover', objectPosition: 'center',
-          opacity: 0.35, pointerEvents: 'none',
+          opacity: 0.20, pointerEvents: 'none',
         }} />
         {/* Gradient: fade in from DARKER top, fade out to DARK bottom */}
         <div style={{
