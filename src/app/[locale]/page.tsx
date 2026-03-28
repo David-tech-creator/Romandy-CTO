@@ -422,25 +422,6 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
         </div>
       </section>
 
-      {/* ── Numbers ───────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden" style={{ backgroundColor: DARKER, borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-        <div className="orb orb-orange orb-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style={{ opacity: 0.22 }} />
-        <div className="relative max-w-6xl mx-auto px-6 py-14 grid grid-cols-2 sm:grid-cols-4 gap-10 text-center">
-          {[
-            { value: '510+', label: t('stats.members') },
-            { value: '23', label: t('stats.events') },
-            { value: '4.8★', label: t('stats.rating') },
-            { value: t('stats.freeValue'), label: t('stats.free') },
-          ].map(({ value, label }) => (
-            <div key={label} className="group">
-              <div className="text-4xl sm:text-5xl font-black stat-value mb-2 transition-transform group-hover:scale-105">
-                <CountUp value={value} />
-              </div>
-              <div className="text-xs sm:text-sm font-medium tracking-wide uppercase" style={{ color: 'rgba(255,255,255,0.35)' }}>{label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* ── Dual-path join CTA ────────────────────────────────────────── */}
       <section id="about" className="py-16 px-6" style={{ backgroundColor: DARK }}>
