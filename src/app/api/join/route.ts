@@ -8,8 +8,6 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY!
 )
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function POST(req: NextRequest) {
   const { firstName, lastName, email, company, role, locale } = await req.json()
 
@@ -31,6 +29,7 @@ export async function POST(req: NextRequest) {
 
   // Send welcome email (non-blocking — don't fail the signup if email fails)
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY)
     const { subject, html } = welcomeEmail({ firstName, locale: locale || 'en' })
     await resend.emails.send({
       from: process.env.RESEND_FROM ?? 'Romandy CTO <hello@ctoromandy.ch>',

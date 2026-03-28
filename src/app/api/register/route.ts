@@ -9,8 +9,6 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY!
 )
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function POST(request: NextRequest) {
   const body = await request.json()
   const { firstName, lastName, email, company, jobTitle, eventName, locale } = body
@@ -38,6 +36,7 @@ export async function POST(request: NextRequest) {
 
   // Send registration confirmation email (non-blocking)
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY)
     const { subject, html } = eventRegistrationEmail({
       firstName,
       eventName: UPCOMING_EVENT.title,
