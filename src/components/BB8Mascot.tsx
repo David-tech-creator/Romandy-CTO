@@ -5,32 +5,31 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, OrbitControls, Environment } from '@react-three/drei'
 import * as THREE from 'three'
 
+// Point Draco decoder at the files we copied to /public/draco/
+useGLTF.setDecoderPath('/draco/')
+
 function RobotModel() {
   const group = useRef<THREE.Group>(null!)
-  const { scene } = useGLTF('/robot.glb')
+  const { scene } = useGLTF('/tiny-robot.glb')
 
-  // Clone and override materials to be lighter
+  // Clone and boost material brightness
   const clonedScene = useMemo(() => {
     const clone = scene.clone(true)
     clone.traverse((child) => {
       if ((child as THREE.Mesh).isMesh) {
         const mesh = child as THREE.Mesh
-        const original = Array.isArray(mesh.material)
-          ? mesh.material[0]
-          : mesh.material
-        const orig = original as THREE.MeshStandardMaterial
+        const original = (Array.isArray(mesh.material) ? mesh.material[0] : mesh.material) as THREE.MeshStandardMaterial
         const mat = new THREE.MeshStandardMaterial({
-          color: orig.color ?? new THREE.Color(0.6, 0.6, 0.6),
-          roughness: Math.min((orig.roughness ?? 0.5) * 0.6, 0.5),
-          metalness: orig.metalness ?? 0.3,
-          emissive: orig.emissive ?? new THREE.Color(0, 0, 0),
-          emissiveIntensity: 0.15,
-          map: orig.map ?? null,
+          color: original.color?.clone() ?? new THREE.Color(0.7, 0.6, 0.4),
+          roughness: Math.min((original.roughness ?? 0.5) * 0.5, 0.45),
+          metalness: original.metalness ?? 0.4,
+          emissiveIntensity: 0.12,
         })
-        // Brighten dark colors
+        // Lift dark surfaces
         const hsl = { h: 0, s: 0, l: 0 }
         mat.color.getHSL(hsl)
-        if (hsl.l < 0.25) mat.color.setHSL(hsl.h, hsl.s, 0.35)
+        if (hsl.l < 0.3) mat.color.setHSL(hsl.h, hsl.s, 0.4)
+        mat.emissive = mat.color.clone().multiplyScalar(0.15)
         mesh.material = mat
       }
     })
@@ -80,13 +79,11 @@ export default function BB8Mascot() {
         gl={{ antialias: true, alpha: true }}
         style={{ background: 'transparent' }}
       >
-        {/* Environment map — key to making dark metallic materials look lit */}
         <Environment preset="studio" />
-
-        <ambientLight intensity={3.0} />
-        <directionalLight position={[-3, 5, 4]} intensity={4.0} color="#ffffff" />
-        <directionalLight position={[4, 2, 4]} intensity={3.0} color="#fff5e8" />
-        <pointLight position={[0, -2, 4]} intensity={2.0} color="#c8834a" />
+        <ambientLight intensity={3.5} />
+        <directionalLight position={[-3, 5, 4]} intensity={5.0} color="#ffffff" />
+        <directionalLight position={[4, 2, 4]} intensity={3.5} color="#fff5e8" />
+        <pointLight position={[0, -2, 4]} intensity={2.5} color="#c8834a" />
 
         <RobotModel />
 
@@ -101,4 +98,4 @@ export default function BB8Mascot() {
   )
 }
 
-useGLTF.preload('/robot.glb')
+useGLTF.preload('/tiny-robot.glb')

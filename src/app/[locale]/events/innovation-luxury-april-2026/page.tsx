@@ -520,6 +520,15 @@ export default async function AgenticCommercePage({
             — Pedro López-Belmonte, Technology Strategist · Top Luxury Speaker of the World 2026
           </p>
 
+          {/* Visual — AI & commerce */}
+          <div className="mb-16 rounded-2xl overflow-hidden" style={{ maxWidth: '42rem' }}>
+            <img
+              src="/agentic4.jpeg"
+              alt="AI transforming commerce"
+              style={{ width: '100%', height: 280, objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+            />
+          </div>
+
           <p className="text-lg leading-relaxed mb-4" style={{ color: 'rgba(255,255,255,0.62)', maxWidth: '42rem' }}>
             Pedro used three AI agents to buy a luxury coat. They excelled at discovery — then hit a wall. Incomplete 
             product data. No direct commerce integrations. No trust. He ended up doing what he&apos;s always done: visiting
@@ -679,6 +688,15 @@ export default async function AgenticCommercePage({
           <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-14">
             What we&apos;ll unpack
           </h2>
+
+          {/* Visual banner */}
+          <div className="mb-10 rounded-2xl overflow-hidden">
+            <img
+              src="/agentic3.avif"
+              alt="Agentic commerce landscape"
+              style={{ width: '100%', height: 240, objectFit: 'cover', objectPosition: 'center', display: 'block', opacity: 0.85 }}
+            />
+          </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {([
@@ -887,6 +905,21 @@ export default async function AgenticCommercePage({
           </div>
         </div>
       </section>
+
+      {/* ══════════════════════════════════════════════════════════════ */}
+      {/* NETWORKING VISUAL                                             */}
+      {/* ══════════════════════════════════════════════════════════════ */}
+      <div style={{ backgroundColor: DARK }}>
+        <div className="max-w-6xl mx-auto px-6 py-6">
+          <div className="rounded-2xl overflow-hidden">
+            <img
+              src="/agentic.png"
+              alt="Tech leaders networking"
+              style={{ width: '100%', height: 320, objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+            />
+          </div>
+        </div>
+      </div>
 
       {/* ══════════════════════════════════════════════════════════════ */}
       {/* REGISTER CTA                                                  */}
