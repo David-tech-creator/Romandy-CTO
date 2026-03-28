@@ -61,8 +61,6 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
 
       {/* ── Hero ──────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden pt-8 pb-12 px-6 text-center" style={{ backgroundColor: DARKER }}>
-        {/* Hero background illustration */}
-        <img src="/ctomain3.jpeg" aria-hidden="true" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', opacity: 0.05, pointerEvents: 'none', filter: 'saturate(0.3) brightness(0.6)' }} />
         {/* Orbs — inspired by jovweb.dev */}
         <ParallaxOrb className="orb orb-orange orb-lg absolute -top-32 left-1/2 -translate-x-1/2" style={{ opacity: 0.35 }} speed={0.15} />
         <ParallaxOrb className="orb orb-orange orb-sm absolute top-20 right-10" style={{ opacity: 0.18 }} speed={0.25} />
@@ -149,24 +147,28 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
       </section>
 
       {/* ── Who's in the room ─────────────────────────────────────────── */}
-      <section className="py-16 px-6 relative overflow-hidden" style={{ backgroundColor: DARK }}>
-        <div className="orb orb-orange orb-sm absolute top-0 right-0" style={{ opacity: 0.14 }} />
-        <AnimateIn className="relative max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-5">{t('who.title')}</h2>
-          <p className="text-lg text-white/50 leading-relaxed">{t('who.body')}</p>
-        </AnimateIn>
-        <div className="gradient-rule max-w-2xl mx-auto mt-14" />
+      <section className="py-20 px-6" style={{ backgroundColor: DARK }}>
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+          <AnimateIn>
+            <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-6">{t('who.title')}</h2>
+            <p className="text-lg text-white/50 leading-relaxed">{t('who.body')}</p>
+          </AnimateIn>
+          <AnimateIn delay={120}>
+            <div className="rounded-2xl overflow-hidden" style={{ aspectRatio: '16/9' }}>
+              <img
+                src="/ctomain3.jpeg"
+                alt=""
+                aria-hidden="true"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', filter: 'brightness(0.75) saturate(0.7)' }}
+              />
+            </div>
+          </AnimateIn>
+        </div>
+        <div className="gradient-rule max-w-6xl mx-auto mt-16" />
       </section>
-
-      {/* ── Intersection strip — tech leader visual ───────────────────── */}
-      <div style={{ height: 200, position: 'relative', overflow: 'hidden' }}>
-        <img src="/ctomain5.jpeg" alt="" aria-hidden="true" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%', opacity: 0.70, filter: 'brightness(0.65) saturate(0.7)' }} />
-        <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, ${DARK} 0%, transparent 25%, transparent 75%, ${DARKER} 100%)` }} />
-      </div>
 
       {/* ── Three ways to connect ─────────────────────────────────────── */}
       <section className="py-16 px-6 relative overflow-hidden" style={{ backgroundColor: DARKER }}>
-        <img src="/ctomain4.jpeg" aria-hidden="true" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', opacity: 0.06, pointerEvents: 'none', filter: 'saturate(0.6)' }} />
         {/* Sonar heartbeat rings — pulse metaphor */}
         <div className="sonar-ring" />
         <div className="sonar-ring sonar-ring-2" />
@@ -206,7 +208,6 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
 
       {/* ── Upcoming event ────────────────────────────────────────────── */}
       <section id="next-event" className="relative overflow-hidden" style={{ backgroundColor: DARK, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-        <img src="/ctomain10.png" aria-hidden="true" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', opacity: 0.05, pointerEvents: 'none' }} />
         <div className="orb orb-orange orb-md absolute -top-10 -left-10" style={{ opacity: 0.18 }} />
         <div className="max-w-6xl mx-auto px-6 py-16">
           <div
@@ -254,9 +255,8 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
       </section>
 
       {/* ── Topics ────────────────────────────────────────────────────── */}
-      <section className="py-16 px-6 relative overflow-hidden" style={{ backgroundColor: DARKER, borderTop: '1px solid rgba(255,255,255,0.07)' }}>
-        <img src="/ctomain7.jpeg" aria-hidden="true" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', opacity: 0.07, pointerEvents: 'none', filter: 'saturate(0.5)' }} />
-        <div className="max-w-6xl mx-auto relative">
+      <section className="py-16 px-6" style={{ backgroundColor: DARKER, borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+        <div className="max-w-6xl mx-auto">
           <AnimateIn className="text-center mb-10">
             <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-4">{t('topics.title')}</h2>
             {t('topics.subtitle') && <p className="text-white/45 max-w-lg mx-auto">{t('topics.subtitle')}</p>}
@@ -285,15 +285,14 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
         </div>
       </section>
 
-      {/* ── Intersection strip — abstract divider ─────────────────────── */}
-      <div style={{ height: 160, position: 'relative', overflow: 'hidden' }}>
-        <img src="/ctomain1.jpeg" alt="" aria-hidden="true" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', opacity: 0.65, filter: 'brightness(0.55) saturate(0.55)' }} />
-        <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, ${DARKER} 0%, transparent 30%, transparent 70%, ${DARK} 100%)` }} />
+      {/* ── Editorial separator ───────────────────────────────────────── */}
+      <div style={{ height: 320, position: 'relative', overflow: 'hidden' }}>
+        <img src="/ctomain11.webp" alt="" aria-hidden="true" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', filter: 'brightness(0.5) saturate(0.6)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to bottom, ${DARKER} 0%, transparent 20%, transparent 80%, ${DARK} 100%)` }} />
       </div>
 
       {/* ── Past events ───────────────────────────────────────────────── */}
       <section id="events" className="py-16 px-6 relative overflow-hidden" style={{ backgroundColor: DARK }}>
-        <img src="/ctomain8.jpeg" aria-hidden="true" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', opacity: 0.06, pointerEvents: 'none', filter: 'saturate(0.4)' }} />
         <div className="orb orb-orange orb-sm absolute bottom-0 right-0" style={{ opacity: 0.16 }} />
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
@@ -362,7 +361,6 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
 
       {/* ── Numbers ───────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden" style={{ backgroundColor: DARKER, borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-        <img src="/ctomain6.jpeg" aria-hidden="true" alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', opacity: 0.10, pointerEvents: 'none', filter: 'saturate(0.5)' }} />
         <div className="orb orb-orange orb-md absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style={{ opacity: 0.22 }} />
         <div className="relative max-w-6xl mx-auto px-6 py-14 grid grid-cols-2 sm:grid-cols-4 gap-10 text-center">
           {[
@@ -382,10 +380,8 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
       </section>
 
       {/* ── Dual-path join CTA ────────────────────────────────────────── */}
-      <section id="about" className="py-16 px-6 relative overflow-hidden" style={{ backgroundColor: DARK }}>
-        <img src="/ctomain11.webp" aria-hidden="true" alt="" style={{ position: 'absolute', top: 0, right: 0, width: '55%', height: '100%', objectFit: 'cover', objectPosition: 'center', opacity: 0.10, pointerEvents: 'none', filter: 'saturate(0.5)' }} />
-        <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to right, ${DARK} 30%, transparent 70%, ${DARK} 100%)`, pointerEvents: 'none' }} />
-        <div className="max-w-4xl mx-auto relative">
+      <section id="about" className="py-16 px-6" style={{ backgroundColor: DARK }}>
+        <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10">
             <h2 className="text-3xl sm:text-4xl font-black text-white uppercase mb-4">{t('joinDual.title')}</h2>
             {t('joinDual.subtitle') && <p className="text-white/50 max-w-md mx-auto">{t('joinDual.subtitle')}</p>}
