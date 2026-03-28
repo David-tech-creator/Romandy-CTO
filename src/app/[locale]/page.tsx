@@ -142,10 +142,20 @@ export default function LandingPage({ params: { locale } }: { params: { locale: 
       {/* ── Upcoming event ────────────────────────────────────────────── */}
       <section
         id="next-event"
-        className="px-6 py-16"
+        className="px-6 py-16 relative overflow-hidden"
         style={{ backgroundColor: DARKER, borderTop: `1px solid ${BORDER}` }}
       >
-        <div className="max-w-6xl mx-auto">
+        <img
+          src="/agentic12.png"
+          alt=""
+          aria-hidden="true"
+          style={{
+            position: 'absolute', inset: 0, width: '100%', height: '100%',
+            objectFit: 'cover', objectPosition: 'center',
+            pointerEvents: 'none',
+          }}
+        />
+        <div className="max-w-6xl mx-auto relative" style={{ zIndex: 1 }}>
           <div
             className="animated-event-card rounded-2xl p-8 sm:p-10 flex flex-col sm:flex-row gap-8 items-start sm:items-center justify-between"
             style={{ backgroundColor: DARK, border: `1px solid ${BORDER}` }}
