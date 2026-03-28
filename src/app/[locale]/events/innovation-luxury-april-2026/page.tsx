@@ -17,6 +17,125 @@ const EVENT_NAME = 'Agentic Commerce & the Luxury Industry'
 const SLUG = 'innovation-luxury-april-2026'
 const MAX_SPOTS = 50
 
+// ─── Agent Mascot SVG ─────────────────────────────────────────────────────────
+function AgentMascotSVG() {
+  return (
+    <svg
+      viewBox="0 0 400 460"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ width: '100%', maxWidth: 420, height: 'auto' }}
+      aria-hidden="true"
+    >
+      <defs>
+        <filter id="m-glow-lg" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur stdDeviation="8" result="blur" />
+          <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+        </filter>
+        <filter id="m-glow-sm" x="-100%" y="-100%" width="300%" height="300%">
+          <feGaussianBlur stdDeviation="5" result="blur" />
+          <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+        </filter>
+        <radialGradient id="m-head-grad" cx="45%" cy="35%" r="65%">
+          <stop offset="0%" stopColor="#3a3a3a" />
+          <stop offset="100%" stopColor="#1c1c1c" />
+        </radialGradient>
+        <radialGradient id="m-body-grad" cx="50%" cy="30%" r="70%">
+          <stop offset="0%" stopColor="#303030" />
+          <stop offset="100%" stopColor="#1a1a1a" />
+        </radialGradient>
+        <radialGradient id="m-base-grad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="rgba(200,131,74,0.40)" />
+          <stop offset="100%" stopColor="rgba(200,131,74,0)" />
+        </radialGradient>
+      </defs>
+
+      {/* Background rings — same language as network SVG */}
+      <circle cx="200" cy="230" r="145" stroke="rgba(200,131,74,0.05)" strokeWidth="1" />
+      <circle cx="200" cy="230" r="108" stroke="rgba(200,131,74,0.08)" strokeWidth="1" />
+      <circle cx="200" cy="230" r="72"  stroke="rgba(200,131,74,0.12)" strokeWidth="1" />
+      <circle cx="200" cy="230" r="120" stroke="rgba(200,131,74,0.22)" strokeWidth="1" className="ac-ring" />
+      <circle cx="200" cy="230" r="120" stroke="rgba(200,131,74,0.22)" strokeWidth="1" className="ac-ring ac-ring-2" />
+
+      {/* Base glow shadow */}
+      <ellipse cx="200" cy="398" rx="88" ry="16" fill="url(#m-base-grad)" className="mascot-base" />
+
+      {/* ── Mascot — whole group floats ── */}
+      <g className="mascot-float">
+
+        {/* Body */}
+        <rect x="148" y="296" width="104" height="82" rx="20"
+          fill="url(#m-body-grad)" stroke="rgba(200,131,74,0.18)" strokeWidth="1.5" />
+        <line x1="168" y1="320" x2="232" y2="320" stroke="rgba(200,131,74,0.10)" strokeWidth="1" />
+        <line x1="168" y1="334" x2="232" y2="334" stroke="rgba(200,131,74,0.07)" strokeWidth="1" />
+        {/* Chest indicator */}
+        <circle cx="200" cy="352" r="5.5" fill={ORANGE} filter="url(#m-glow-sm)" className="mascot-chest" />
+        <circle cx="200" cy="352" r="2.5"  fill="rgba(255,240,210,0.95)" />
+
+        {/* Neck */}
+        <rect x="181" y="278" width="38" height="24" rx="8" fill="#222"
+          stroke="rgba(200,131,74,0.12)" strokeWidth="1" />
+        <line x1="191" y1="284" x2="209" y2="284" stroke="rgba(200,131,74,0.18)" strokeWidth="1" />
+        <line x1="191" y1="291" x2="209" y2="291" stroke="rgba(200,131,74,0.11)" strokeWidth="1" />
+
+        {/* Head */}
+        <rect x="86" y="125" width="228" height="160" rx="38"
+          fill="url(#m-head-grad)" stroke="rgba(200,131,74,0.28)" strokeWidth="1.5" />
+        {/* Head top highlight */}
+        <rect x="98" y="133" width="105" height="42" rx="22" fill="rgba(255,255,255,0.025)" />
+
+        {/* Ear nubs */}
+        <rect x="67"  y="178" width="21" height="38" rx="10.5"
+          fill="#252525" stroke="rgba(200,131,74,0.18)" strokeWidth="1" />
+        <circle cx="77.5" cy="197" r="4.5" fill="rgba(200,131,74,0.22)" />
+        <rect x="312" y="178" width="21" height="38" rx="10.5"
+          fill="#252525" stroke="rgba(200,131,74,0.18)" strokeWidth="1" />
+        <circle cx="322.5" cy="197" r="4.5" fill="rgba(200,131,74,0.22)" />
+
+        {/* Antenna stem */}
+        <rect x="197" y="86" width="6" height="43" rx="3" fill="rgba(200,131,74,0.38)" />
+        {/* Antenna ring glow */}
+        <circle cx="200" cy="78" r="15" fill="rgba(200,131,74,0.10)" className="mascot-antenna-ring" />
+        {/* Antenna orb */}
+        <circle cx="200" cy="78" r="9" fill="#252525"
+          stroke={ORANGE} strokeWidth="1.5" filter="url(#m-glow-sm)" className="mascot-antenna" />
+        <circle cx="200" cy="78" r="4.5" fill={ORANGE} />
+
+        {/* Left eye — diamond */}
+        <g filter="url(#m-glow-sm)" className="mascot-eyes">
+          <polygon points="146,192 165,211 146,230 127,211" fill={ORANGE} />
+          <polygon points="146,201 155,211 146,221 137,211" fill="rgba(255,242,215,0.95)" />
+        </g>
+        {/* Right eye — diamond */}
+        <g filter="url(#m-glow-sm)" className="mascot-eyes">
+          <polygon points="254,192 273,211 254,230 235,211" fill={ORANGE} />
+          <polygon points="254,201 263,211 254,221 245,211" fill="rgba(255,242,215,0.95)" />
+        </g>
+
+        {/* Chin detail */}
+        <rect x="178" y="254" width="44" height="5" rx="2.5" fill="rgba(200,131,74,0.10)" />
+      </g>
+
+      {/* Rising data particles */}
+      <circle r="2.5" fill={ORANGE}>
+        <animateMotion dur="3s" repeatCount="indefinite" begin="0s"
+          path="M340,210 Q355,165 340,110" keyPoints="0;1" keyTimes="0;1" calcMode="linear" />
+        <animate attributeName="opacity" values="0;0.65;0" dur="3s" repeatCount="indefinite" begin="0s" />
+      </circle>
+      <circle r="2" fill={ORANGE}>
+        <animateMotion dur="2.6s" repeatCount="indefinite" begin="1.1s"
+          path="M62,210 Q48,168 62,115" keyPoints="0;1" keyTimes="0;1" calcMode="linear" />
+        <animate attributeName="opacity" values="0;0.50;0" dur="2.6s" repeatCount="indefinite" begin="1.1s" />
+      </circle>
+      <circle r="1.8" fill={ORANGE}>
+        <animateMotion dur="3.6s" repeatCount="indefinite" begin="1.9s"
+          path="M322,245 Q345,198 328,150" keyPoints="0;1" keyTimes="0;1" calcMode="linear" />
+        <animate attributeName="opacity" values="0;0.40;0" dur="3.6s" repeatCount="indefinite" begin="1.9s" />
+      </circle>
+    </svg>
+  )
+}
+
 // ─── Agent Network SVG ────────────────────────────────────────────────────────
 function AgentNetworkSVG() {
   return (
@@ -226,6 +345,38 @@ export default async function AgenticCommercePage({
           border-color: rgba(200,131,74,0.50) !important;
           box-shadow: 0 24px 64px -12px rgba(200,131,74,0.20);
         }
+
+        @keyframes mascot-float-anim {
+          0%, 100% { transform: translateY(0px); }
+          50%       { transform: translateY(-14px); }
+        }
+        @keyframes mascot-eyes-pulse {
+          0%, 100% { opacity: 1; }
+          45%, 55% { opacity: 0.60; }
+        }
+        @keyframes mascot-antenna-pulse {
+          0%, 100% { opacity: 1; }
+          50%       { opacity: 0.70; }
+        }
+        @keyframes mascot-antenna-ring-pulse {
+          0%, 100% { opacity: 0.10; transform: scale(1);   }
+          50%       { opacity: 0.28; transform: scale(1.25); }
+        }
+        @keyframes mascot-base-pulse {
+          0%, 100% { opacity: 0.80; transform: scaleX(1);    }
+          50%       { opacity: 1;    transform: scaleX(1.10); }
+        }
+        @keyframes mascot-chest-pulse {
+          0%, 100% { opacity: 0.75; }
+          50%       { opacity: 1; }
+        }
+
+        .mascot-float         { animation: mascot-float-anim       4s ease-in-out infinite; transform-box: fill-box; transform-origin: center bottom; }
+        .mascot-eyes          { animation: mascot-eyes-pulse        2.8s ease-in-out infinite; }
+        .mascot-antenna       { animation: mascot-antenna-pulse     2s ease-in-out infinite; }
+        .mascot-antenna-ring  { animation: mascot-antenna-ring-pulse 2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+        .mascot-base          { animation: mascot-base-pulse        4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+        .mascot-chest         { animation: mascot-chest-pulse       2s ease-in-out infinite; }
       `}</style>
 
       {/* ── Back nav ────────────────────────────────────────────────── */}
@@ -332,9 +483,9 @@ export default async function AgenticCommercePage({
               </div>
             </div>
 
-            {/* Right — Agent network visualization */}
+            {/* Right — Agent mascot */}
             <div className="hidden lg:flex items-center justify-center">
-              <AgentNetworkSVG />
+              <AgentMascotSVG />
             </div>
           </div>
         </div>
