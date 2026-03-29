@@ -1,0 +1,66 @@
+name: Notify Community
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/blog/**.md'
+      - 'src/app/**/events/**/page.tsx'
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      # ── Detect what was added in this push ──────────────────────────────────
+      - name: Detect new content
+        id: detect
+        run: |
+          # New blog post (.md added to content/blog/)
+          NEW_POST=$(git diff --name-only --diff-filter=A HEAD~1 HEAD -- 'content/blog/' \
+            | grep '\.md$' | head -1 || true)
+
+          # New event page (page.tsx added under events/, ignoring [slug] template)
+          NEW_EVENT_FILE=$(git diff --name-only --diff-filter=A HEAD~1 HEAD -- 'src/app/' \
+            | grep 'events/.*/page\.tsx' | grep -v '\[slug\]' | head -1 || true)
+
+          # Extract slug from path: src/app/[locale]/events/MY-SLUG/page.tsx → MY-SLUG
+          NEW_EVENT_SLUG=""
+          if [ -n "$NEW_EVENT_FILE" ]; then
+            NEW_EVENT_SLUG=$(echo "$NEW_EVENT_FILE" | sed 's|.*/events/\([^/]*\)/page\.tsx|\1|')
+          fi
+
+          echo "new_post=$NEW_POST"         >> $GITHUB_OUTPUT
+          echo "new_event_slug=$NEW_EVENT_SLUG" >> $GITHUB_OUTPUT
+          echo "New post detected:  $NEW_POST"
+          echo "New event detected: $NEW_EVENT_SLUG"
+
+      # ── Only continue if something new was found ────────────────────────────
+      - uses: actions/setup-node@v4
+        if: steps.detect.outputs.new_post != '' || steps.detect.outputs.new_event_slug != ''
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        if: steps.detect.outputs.new_post != '' || steps.detect.outputs.new_event_slug != ''
+        run: npm install
+
+      # ── Export events to JSON (needed for event notifications) ──────────────
+      - name: Export events data
+        if: steps.detect.outputs.new_event_slug != ''
+        run: node scripts/export-events.mjs
+
+      # ── Send emails ─────────────────────────────────────────────────────────
+      - name: Send community notifications
+        if: steps.detect.outputs.new_post != '' || steps.detect.outputs.new_event_slug != ''
+        env:
+          RESEND_API_KEY:  ${{ secrets.RESEND_API_KEY }}
+          RESEND_FROM:     ${{ secrets.RESEND_FROM }}
+          SUPABASE_URL:    ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_KEY:    ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY }}
+          NEW_POST:        ${{ steps.detect.outputs.new_post }}
+          NEW_EVENT_SLUG:  ${{ steps.detect.outputs.new_event_slug }}
+        run: node scripts/notify-community.mjs

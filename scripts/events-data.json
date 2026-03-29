@@ -1,0 +1,88 @@
+[
+  {
+    "slug": "innovation-luxury-april-2026",
+    "title": "Agentic Commerce & the Luxury Industry",
+    "titleFr": "Le Commerce Agentique & l'Industrie du Luxe",
+    "date": "April 30, 2026",
+    "time": "7:00 PM CET",
+    "location": "Antaes, GBC – Avenue des Morgines 12, Petit-Lancy",
+    "description": "AI agents are beginning to reshape how consumers discover, evaluate, and buy luxury products. This evening brings together two perspectives — architecture and strategy — to explore what agentic commerce really means for technology leaders in the luxury sector: from omnichannel to agent-driven architectures, trust mechanisms, protocols, and the role of blockchain and digital product passports.",
+    "descriptionFr": "Les agents IA commencent à transformer la façon dont les consommateurs découvrent, évaluent et achètent des produits de luxe. Cette soirée réunit deux perspectives — architecture et stratégie — pour explorer ce que le commerce agentique signifie vraiment pour les leaders technologiques du secteur du luxe : des architectures omnicanales aux architectures pilotées par des agents, les mécanismes de confiance, les protocoles et le rôle de la blockchain et des passeports numériques de produits.",
+    "agenda": [
+      {
+        "time": "19:00",
+        "item": "Doors open & networking"
+      },
+      {
+        "time": "19:30",
+        "item": "Introduction to Agentic Commerce — short presentation"
+      },
+      {
+        "time": "19:50",
+        "item": "Panel discussion: architecture, strategy & the luxury paradox"
+      },
+      {
+        "time": "20:45",
+        "item": "Open Q&A"
+      },
+      {
+        "time": "21:00",
+        "item": "Drinks & networking"
+      }
+    ],
+    "maxSpots": 50,
+    "isUpcoming": true
+  },
+  {
+    "slug": "ai-dlc-february-2026",
+    "title": "Building Apps Will Never Be the Same Again: Welcome to AI-DLC!",
+    "titleFr": "Building Apps Will Never Be the Same Again: Welcome to AI-DLC!",
+    "date": "Feb 12, 2026",
+    "time": "6:30 PM CET",
+    "location": "Pictet, Route des Acacias 60, Carouge",
+    "description": "A deep dive into AI-driven development lifecycles and how CTOs are rethinking their engineering organizations.",
+    "descriptionFr": "Une exploration approfondie des cycles de développement pilotés par l'IA et la façon dont les CTOs repensent leurs organisations d'ingénierie.",
+    "maxSpots": 60,
+    "isUpcoming": false,
+    "attendees": 56
+  },
+  {
+    "slug": "quantum-ai-january-2026",
+    "title": "Quantum-AI Convergence: A Strategic Framework for Technology Leaders",
+    "titleFr": "Convergence Quantum-IA : Un Cadre Stratégique pour les Leaders Technologiques",
+    "date": "Jan 29, 2026",
+    "time": "6:30 PM CET",
+    "location": "Antaes, Avenue des Morgines 12, Lancy",
+    "description": "Exploring the intersection of quantum computing and artificial intelligence, and what it means strategically for technology leaders.",
+    "descriptionFr": "Explorer l'intersection du calcul quantique et de l'intelligence artificielle, et ce que cela signifie stratégiquement pour les leaders technologiques.",
+    "maxSpots": 50,
+    "isUpcoming": false,
+    "attendees": 42
+  },
+  {
+    "slug": "networking-december-2025",
+    "title": "Tech Leaders Networking",
+    "titleFr": "Networking pour Leaders Tech",
+    "date": "Dec 11, 2025",
+    "time": "6:30 PM CET",
+    "location": "La Jonquille, Genève",
+    "description": "An evening dedicated to pure networking for CTOs and technology leaders across Romandy.",
+    "descriptionFr": "Une soirée dédiée au networking pur pour les CTOs et leaders technologiques de Romandie.",
+    "maxSpots": 20,
+    "isUpcoming": false,
+    "attendees": 12
+  },
+  {
+    "slug": "cto-triad-october-2025",
+    "title": "The CTO Triad — Team, Timing & Technology",
+    "titleFr": "La Triade CTO — Équipe, Timing & Technologie",
+    "date": "Oct 21, 2025",
+    "time": "6:30 PM CET",
+    "location": "SonarSource, Vernier",
+    "description": "Exploring the three pillars of a successful CTO: building the right team, choosing the right timing for technology decisions, and selecting the right technology stack.",
+    "descriptionFr": "Explorer les trois piliers d'un CTO réussi : construire la bonne équipe, choisir le bon timing pour les décisions technologiques, et sélectionner la bonne pile technologique.",
+    "maxSpots": 40,
+    "isUpcoming": false,
+    "attendees": 27
+  }
+]
