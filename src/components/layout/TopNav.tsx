@@ -41,6 +41,9 @@ export function TopNav() {
           <Link href={`/${locale}/blog`} className="text-sm text-white/60 hover:text-white transition-colors">
             {t('blog')}
           </Link>
+          <Link href={`/${locale}/newsletter`} className="text-sm text-white/60 hover:text-white transition-colors">
+            {t('newsletter')}
+          </Link>
           <a
             href={MEETUP_URL}
             target="_blank"
@@ -114,6 +117,13 @@ export function TopNav() {
             className="py-2.5 text-sm text-white/70 hover:text-white transition-colors"
           >
             {t('blog')}
+          </Link>
+          <Link
+            href={`/${locale}/newsletter`}
+            onClick={() => setOpen(false)}
+            className="py-2.5 text-sm text-white/70 hover:text-white transition-colors"
+          >
+            {t('newsletter')}
           </Link>
           <a
             href={MEETUP_URL}
