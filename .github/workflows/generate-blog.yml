@@ -29,11 +29,12 @@ jobs:
         run: node scripts/generate-post.mjs
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - name: Commit new post
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'content: auto-generate blog post'
-          file_pattern: 'content/blog/*.md'
+          file_pattern: 'content/blog/*.md public/blog/*.png'
           commit_user_name: 'Romandy CTO Bot'
           commit_user_email: 'bot@ctoromandy.ch'
