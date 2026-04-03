@@ -1,5 +1,5 @@
 ---
-coverImage: "/agentic12.png"
+coverImage: "/agentic11.webp"
 title: "Swiss Startups: The Ground Is Shifting Fast"
 excerpt: "Switzerland's startup ecosystem is quietly restructuring around AI, defense tech, and new funding mechanics. Here's what CTOs should actually pay attention to."
 date: "2026-04-01"

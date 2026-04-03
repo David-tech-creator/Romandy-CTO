@@ -1,5 +1,5 @@
 ---
-coverImage: "/agentic12.png"
+coverImage: "/agentic9.png"
 title: "Agentic AI: What CTOs Must Evaluate Now"
 excerpt: "Agentic AI systems are moving from demos to production. Here's what actually matters when you're the one signing off on putting autonomous agents into your enterprise stack."
 date: "2026-03-30"
