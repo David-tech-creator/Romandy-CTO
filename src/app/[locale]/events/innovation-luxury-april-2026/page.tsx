@@ -2,7 +2,7 @@ import { unstable_setRequestLocale } from 'next-intl/server'
 import Link from 'next/link'
 import {
   ArrowLeft, ArrowRight, Calendar, Clock, MapPin, Users,
-  Shield, Cpu, Database, Network, Lock, Sparkles,
+  Shield, Cpu, Network, Lock, Sparkles,
 } from 'lucide-react'
 import { auth } from '@clerk/nextjs/server'
 import { createClient } from '@supabase/supabase-js'
@@ -370,10 +370,6 @@ export default async function AgenticCommercePage({
     card03Body: isFr
       ? 'Les normes techniques émergentes permettant l\'interopérabilité des agents. Ce qu\'elles sont, ce qui leur manque encore et à quoi ressemble leur adoption en pratique.'
       : 'The emerging technical standards enabling agent interoperability. What they are, what they still lack, and what adoption looks like in practice.',
-    card04Title: isFr ? 'Blockchain & Passeports Produits Numériques' : 'Blockchain & Digital Product Passports',
-    card04Body: isFr
-      ? 'Des données produits vérifiées au niveau protocolaire — pas seulement du contenu marketing. Provenance et traçabilité on-chain comme fondation d\'un luxe prêt pour les agents.'
-      : 'Verified product data at the protocol level — not just marketing copy. On-chain provenance and traceability as the foundation for agent-ready luxury.',
     card05Title: isFr ? 'Vos Données de Marque Sont-Elles Prêtes pour les Agents ?' : 'Is Your Brand Data Agent-Ready?',
     card05Body: isFr
       ? 'Les agents ont besoin de données structurées, fiables et en temps réel. La plupart des marques de luxe ne les ont pas. À quoi ressemble concrètement une infrastructure de données prête pour les agents ?'
@@ -696,7 +692,7 @@ export default async function AgenticCommercePage({
                     )}
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {['Blockchain', 'Digital Product Passports', 'Luxury Tech', 'Agentic Commerce', 'Digital Identity', 'Richemont'].map((tag) => (
+                    {['Luxury Tech', 'Agentic Commerce', 'Digital Identity', 'Richemont'].map((tag) => (
                       <span key={tag} className="text-xs px-3 py-1.5 rounded-full"
                         style={{ backgroundColor: 'rgba(255,255,255,0.05)', color: 'rgba(255,255,255,0.45)', border: '1px solid rgba(255,255,255,0.09)' }}>
                         {tag}
@@ -984,20 +980,14 @@ export default async function AgenticCommercePage({
                   body: T.card03Body,
                 },
                 {
-                  Icon: Database,
-                  num: '04',
-                  title: T.card04Title,
-                  body: T.card04Body,
-                },
-                {
                   Icon: Lock,
-                  num: '05',
+                  num: '04',
                   title: T.card05Title,
                   body: T.card05Body,
                 },
                 {
                   Icon: Sparkles,
-                  num: '06',
+                  num: '05',
                   title: T.card06Title,
                   body: T.card06Body,
                 },
